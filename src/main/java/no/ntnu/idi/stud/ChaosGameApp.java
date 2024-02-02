@@ -4,7 +4,7 @@ package no.ntnu.idi.stud;
  * Hello world!
  *
  */
-public class App 
+public class ChaosGameApp
 {
     public static void main( String[] args )
     {
