@@ -22,6 +22,35 @@ public class Matrix2x2 {
   private double a11;
 
   /**
+   * Gets the value a00 of the matrix
+   * @return a00
+   */
+  public double getA00() {
+    return a00;
+  }
+  /**
+   * Gets the value a00 of the matrix
+   * @return a01
+   */
+  public double getA01() {
+    return a01;
+  }
+  /**
+   * Gets the value a00 of the matrix
+   * @return a10
+   */
+  public double getA10() {
+    return a10;
+  }
+  /**
+   * Gets the value a00 of the matrix
+   * @return a11
+   */
+  public double getA11() {
+    return a11;
+  }
+
+  /**
    * Create a new 2x2 matrix.
    *
    * @param a00 The first row and first column of the matrix
