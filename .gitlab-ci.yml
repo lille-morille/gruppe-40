@@ -1,0 +1,9 @@
+stages:
+  - lint
+
+Client_Checkstyle:
+  stage: lint
+  script:
+    - mvn checkstyle:checkstyle
+    - cat checkstyle-result.xml
+  allow_failure: false
