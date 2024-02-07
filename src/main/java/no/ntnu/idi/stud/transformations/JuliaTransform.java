@@ -2,7 +2,6 @@ package no.ntnu.idi.stud.transformations;
 
 import no.ntnu.idi.stud.models.Complex;
 import no.ntnu.idi.stud.models.Vector2D;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * A 2D Julia complex transformation.
@@ -31,6 +30,6 @@ public class JuliaTransform extends Transform2D {
 
   @Override
   public Vector2D transform(Vector2D point) {
-    throw new NotImplementedException();
+    throw new UnsupportedOperationException();
   }
 }

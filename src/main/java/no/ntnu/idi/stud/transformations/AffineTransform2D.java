@@ -2,7 +2,6 @@ package no.ntnu.idi.stud.transformations;
 
 import no.ntnu.idi.stud.models.Matrix2x2;
 import no.ntnu.idi.stud.models.Vector2D;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * A 2D affine transformation.
@@ -31,6 +30,6 @@ public class AffineTransform2D extends Transform2D {
 
   @Override
   public Vector2D transform(Vector2D point) {
-    throw new NotImplementedException();
+    throw new UnsupportedOperationException();
   }
 }
