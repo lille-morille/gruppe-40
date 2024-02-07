@@ -74,4 +74,9 @@ public class Matrix2x2 {
   public Vector2D multiply(Vector2D b) {
     return new Vector2D(a00 * b.getX0() + a01 * b.getX1(), a10 * b.getX0() + a11 * b.getX1());
   }
+
+  @Override
+  public String toString() {
+    return String.format("Matrix [[%s, %s], [%s, %s]]", a00, a01, a10, a11);
+  }
 }

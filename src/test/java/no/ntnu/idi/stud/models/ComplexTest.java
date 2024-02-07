@@ -7,6 +7,13 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 class ComplexTest {
+  @Test
+  @DisplayName("Test toString()")
+  void testToString() {
+    Complex complex = new Complex(1, 2);
+    assertEquals("Complex [1.0, 2.0]", complex.toString());
+  }
+
   @Nested
   @DisplayName("Tests the complex constructor")
   class ConstructorTest {

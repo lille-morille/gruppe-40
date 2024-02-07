@@ -78,4 +78,9 @@ public class Vector2D {
   public int hashCode() {
     return Objects.hash(x0, x1);
   }
+
+  @Override
+  public String toString() {
+    return String.format("Vector [%s, %s]", x0, x1);
+  }
 }
