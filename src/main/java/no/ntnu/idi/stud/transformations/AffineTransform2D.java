@@ -30,6 +30,6 @@ public class AffineTransform2D extends Transform2D {
 
   @Override
   public Vector2D transform(Vector2D point) {
-    throw new UnsupportedOperationException();
+    return matrix.multiply(point).add(vector);
   }
 }

@@ -36,17 +36,13 @@ public class Matrix2x2 {
     this.a11 = a11;
   }
 
+
   /**
    * Get the first row and first column of the matrix
    *
    * @return The first row and first column of the matrix
    */
-  public Matrix2x2 multiply(Matrix2x2 other) {
-    return new Matrix2x2(
-        a00 * other.a00 + a01 * other.a10,
-        a00 * other.a01 + a01 * other.a11,
-        a10 * other.a00 + a11 * other.a10,
-        a10 * other.a01 + a11 * other.a11
-    );
+  public Vector2D multiply(Vector2D b) {
+    return new Vector2D(a00 * b.getX0() + a01 * b.getX1(), a10 * b.getX0() + a11 * b.getX1());
   }
 }
