@@ -7,6 +7,12 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 class Vector2DTest {
+  @Test
+  void testToString() {
+    Vector2D vector = new Vector2D(1, 2);
+    assertEquals("Vector [1.0, 2.0]", vector.toString());
+  }
+
   @Nested
   @DisplayName("Tests Vector2D constructor")
   class ConstructorTest {

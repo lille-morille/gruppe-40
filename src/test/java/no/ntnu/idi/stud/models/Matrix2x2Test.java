@@ -7,6 +7,13 @@ import org.junit.jupiter.api.*;
 
 class Matrix2x2Test {
 
+  @Test
+  @DisplayName("Test toString()")
+  void testToString() {
+    Matrix2x2 matrix = new Matrix2x2(1, 2, 3, 4);
+    assertEquals("Matrix [[1.0, 2.0], [3.0, 4.0]]", matrix.toString());
+  }
+
   @Nested
   @DisplayName("Test for Matrix2x2 constructor")
   class ConstructorTest {
