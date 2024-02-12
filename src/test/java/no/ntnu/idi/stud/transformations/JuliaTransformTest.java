@@ -4,10 +4,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import no.ntnu.idi.stud.models.Complex;
 import no.ntnu.idi.stud.models.Vector2D;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Tests the JuliaTransform class
+ */
 class JuliaTransformTest {
+
+  /**
+   * Tests that the sign parameter of the constructor must be valid
+   */
   @Test
+  @DisplayName("Tests that the sign parameter of the constructor must be valid")
   void constructorSignParam() {
     Complex point = new Complex(1, 2);
 
@@ -40,7 +49,11 @@ class JuliaTransformTest {
     );
   }
 
+  /**
+   * Tests the transform method
+   */
   @Test
+  @DisplayName("Tests the transform method")
   void testTransformMethod() {
     Complex c = new Complex(0.3, 0.6);
     Complex z = new Complex(0.4, 0.2);
