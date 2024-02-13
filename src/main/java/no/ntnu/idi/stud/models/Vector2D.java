@@ -1,5 +1,7 @@
 package no.ntnu.idi.stud.models;
 
+import java.util.Objects;
+
 /**
  * A class representing a 2D vector.
  */
@@ -60,5 +62,25 @@ public class Vector2D {
    */
   public Vector2D subtract(Vector2D other) {
     return new Vector2D(x0 - other.x0, x1 - other.x1);
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o)
+      return true;
+    if (o == null || getClass() != o.getClass())
+      return false;
+    Vector2D vector2D = (Vector2D) o;
+    return Double.compare(x0, vector2D.x0) == 0 && Double.compare(x1, vector2D.x1) == 0;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(x0, x1);
+  }
+
+  @Override
+  public String toString() {
+    return String.format("Vector [%s, %s]", x0, x1);
   }
 }
