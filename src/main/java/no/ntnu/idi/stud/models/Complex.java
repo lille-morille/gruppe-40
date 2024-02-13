@@ -22,4 +22,9 @@ public class Complex extends Vector2D {
     double x1 = (Math.sqrt((r - getX0()) / 2)) * Math.signum(getX1());
     return new Complex(x0, x1);
   }
+
+  @Override
+  public String toString() {
+    return String.format("Complex [%s, %s]", getX0(), getX1());
+  }
 }

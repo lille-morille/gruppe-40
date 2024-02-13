@@ -24,12 +24,17 @@ public class JuliaTransform extends Transform2D {
    * @param sign  the transformation sign
    */
   public JuliaTransform(Complex point, int sign) {
+    assert sign == -1 || sign == 1 : "Sign must be 1 or -1";
+
     this.point = point;
     this.sign = sign;
   }
 
   @Override
   public Vector2D transform(Vector2D point) {
-    throw new UnsupportedOperationException();
+    Vector2D subtractedRaw = point.subtract(this.point);
+    Complex subtracted = new Complex(subtractedRaw.getX0(), subtractedRaw.getX1());
+    Complex root = subtracted.sqrt();
+    return new Complex(root.getX0() * sign, root.getX1() * sign);
   }
 }
