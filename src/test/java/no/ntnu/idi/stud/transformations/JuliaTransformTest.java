@@ -103,4 +103,8 @@ class JuliaTransformTest {
 
     TestHelper.assertApproximateVectors(expected, result);
   }
+<<<<<<< HEAD
+=======
+
+>>>>>>> dev
 }
