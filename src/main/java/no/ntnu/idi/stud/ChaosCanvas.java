@@ -77,8 +77,7 @@ public class ChaosCanvas {
    * @return the int
    */
   public int getPixel (Vector2D point){
-    Vector2D newVector = transformCoordsToIndices.transform(point);
-    return canvas [(int) newVector.getX0()][(int) newVector.getX1()];
+    return canvas [(int) point.getX0()][(int) point.getX1()];
   }
 
   /**
