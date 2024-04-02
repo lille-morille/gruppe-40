@@ -1,5 +1,6 @@
 package no.ntnu.idi.stud;
 
+import no.ntnu.idi.stud.models.Matrix2x2;
 import no.ntnu.idi.stud.models.Vector2D;
 import no.ntnu.idi.stud.transformations.AffineTransform2D;
 
@@ -17,21 +18,56 @@ public class ChaosCanvas {
   /**
    * Instantiates a new Chaos canvas.
    *
-   * @param canvas                   the canvas
    * @param width                    the width
    * @param height                   the height
    * @param minCoords                the min coords
    * @param maxCoords                the max coords
-   * @param transformCoordsToIndices the transform coords to indices
    */
-  public ChaosCanvas(int[][] canvas, int width, int height, Vector2D minCoords, Vector2D maxCoords,
-      AffineTransform2D transformCoordsToIndices) {
-    this.canvas = canvas;
+  public ChaosCanvas(int width, int height, Vector2D minCoords, Vector2D maxCoords) {
     this.width = width;
     this.height = height;
     this.minCoords = minCoords;
     this.maxCoords = maxCoords;
-    this.transformCoordsToIndices = transformCoordsToIndices;
+
+    this.canvas = new int[width][height];
+
+    //The canvas is a 2D array of integers. Each element in the array represents a pixel in the
+    double deltaXCoords = maxCoords.getX0() - minCoords.getX0();
+    double deltaYCoords = maxCoords.getX1() - minCoords.getX1();
+    double deltaXIndices = width - 1;
+    double deltaYIndices = height - 1;
+
+
+    //The transformation matrix that scales the coordinates to the indices of the canvas.
+    Matrix2x2 scaleMatrix = new Matrix2x2(
+        deltaXIndices / deltaXCoords,
+        0,
+        0,
+        deltaYIndices / deltaYCoords);
+
+    //The transformation vector that offsets the coordinates to the indices of the canvas.
+    Vector2D offsetVector = new Vector2D(
+        -minCoords.getX0() * deltaXIndices / deltaXCoords,
+        -minCoords.getX1() * deltaYIndices / deltaYCoords);
+
+    //The transformation that transforms coordinates to indices.
+    this.transformCoordsToIndices = new AffineTransform2D(scaleMatrix, offsetVector);
+  }
+
+  /**
+   * Gets width.
+   * @return width
+   */
+  public int getWidth() {
+    return width;
+  }
+
+  /**
+   * Gets height.
+   * @return height
+   */
+  public int getHeight() {
+    return height;
   }
 
   /**
