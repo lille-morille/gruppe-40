@@ -8,7 +8,7 @@
   <packaging>jar</packaging>
 
   <name>idatt2003_mappevurdering_gruppe40</name>
-  <url>http://maven.apache.org</url>
+  <url>https://maven.apache.org</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -34,6 +34,9 @@
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
+                <configuration>
+                    <mainClass>no.ntnu.idi.stud.ChaosGameApp</mainClass>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -46,8 +49,8 @@
   <dependencies>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
-      <artifactId>	junit-jupiter</artifactId>
-      <version>	5.10.1</version>
+      <artifactId>junit-jupiter</artifactId>
+      <version>5.10.1</version>
     </dependency>
     <dependency>
       <groupId>org.openjfx</groupId>

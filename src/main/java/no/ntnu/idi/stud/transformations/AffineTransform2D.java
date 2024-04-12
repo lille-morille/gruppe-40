@@ -36,8 +36,8 @@ public class AffineTransform2D extends Transform2D {
   @Override
   public String toSerializedString() {
     StringBuilder str = new StringBuilder();
-    str.append(getClass().getSimpleName());
-    str.append("\n");
+    str.append(super.toSerializedString());
+
     str.append(matrix.toSerializedString());
     str.append(", ");
     str.append(vector.toSerializedString());

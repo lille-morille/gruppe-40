@@ -38,6 +38,10 @@ public class ChaosGameDescription {
     this.transforms = transforms;
   }
 
+  public static ChaosGameDescription empty() {
+    return new ChaosGameDescription(new Vector2D(0, 0), new Vector2D(0, 0), List.of());
+  }
+
   /**
    * Get the minimum coordinates of the game.
    *

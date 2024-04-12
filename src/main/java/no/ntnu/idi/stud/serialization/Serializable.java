@@ -4,5 +4,7 @@ public interface Serializable {
   /**
    * @return Converts the object to a string that can be used for serialization.
    */
-  String toSerializedString();
+  default String toSerializedString() {
+    return getClass().getSimpleName() + "\n";
+  }
 }
