@@ -37,7 +37,7 @@ public class ChaosGameCanvas extends Canvas implements ChaosGameObserver {
   }
 
   @Override
-  public void onGameUpdated(ChaosGame game) {
+  public void onNotified(ChaosGame game) {
     drawPixels(game.getCanvas());
   }
 }

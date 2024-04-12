@@ -62,6 +62,7 @@ public class ChaosGameFileHandler {
   }
 
   public void writeToFile(ChaosGameDescription description, String path) throws IOException {
+    System.out.println("Writing ..." + path);
     FileWriter writer = new FileWriter(path);
     BufferedWriter bufferedWriter = new BufferedWriter(writer);
     bufferedWriter.write(description.getMinCoords().toSerializedString());

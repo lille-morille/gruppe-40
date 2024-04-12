@@ -1,6 +1,5 @@
 package no.ntnu.idi.stud.dispatch;
 
-import no.ntnu.idi.stud.model.ChaosCanvas;
 import no.ntnu.idi.stud.model.ChaosGame;
 
 /**
@@ -11,5 +10,5 @@ public interface ChaosGameObserver {
    * Called whenever the game has been updated.
    * @param game The new game to display.
    */
-  void onGameUpdated(ChaosGame game);
+  void onNotified(ChaosGame game);
 }

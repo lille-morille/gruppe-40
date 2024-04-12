@@ -13,7 +13,7 @@ public class ChaosGameObservable {
 
   protected void notifyObservers(ChaosGame game) {
     for (ChaosGameObserver observer : observers) {
-      observer.onGameUpdated(game);
+      observer.onNotified(game);
     }
   }
 

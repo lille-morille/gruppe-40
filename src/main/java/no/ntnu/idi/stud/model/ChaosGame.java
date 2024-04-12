@@ -26,6 +26,10 @@ public class ChaosGame extends ChaosGameObservable {
     notifyObservers(this);
   }
 
+  public ChaosGameDescription getDescription() {
+    return description;
+  }
+
   public ChaosCanvas getCanvas() {
     return chaosCanvas;
   }
