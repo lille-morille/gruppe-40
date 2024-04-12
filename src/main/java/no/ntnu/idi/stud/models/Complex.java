@@ -12,6 +12,11 @@ public class Complex extends Vector2D {
     super(realPart, imaginaryPart);
   }
 
+  public static Complex fromString(String s) {
+    String[] parts = s.split(",");
+    return new Complex(Double.parseDouble(parts[0]), Double.parseDouble(parts[1]));
+  }
+
   /**
    * Returns the complex conjugate of this complex number.
    * @return the complex conjugate of this complex numberk
