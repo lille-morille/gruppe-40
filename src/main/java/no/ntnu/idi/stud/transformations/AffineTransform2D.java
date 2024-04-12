@@ -32,4 +32,16 @@ public class AffineTransform2D extends Transform2D {
   public Vector2D transform(Vector2D point) {
     return matrix.multiply(point).add(vector);
   }
+
+  @Override
+  public String toSerializedString() {
+    StringBuilder str = new StringBuilder();
+    str.append(getClass().getSimpleName());
+    str.append("\n");
+    str.append(matrix.toSerializedString());
+    str.append(", ");
+    str.append(vector.toSerializedString());
+
+    return str.toString();
+  }
 }

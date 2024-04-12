@@ -10,12 +10,12 @@ public class JuliaTransform extends Transform2D {
   /**
    * The transformation point.
    */
-  private Complex point;
+  private final Complex point;
 
   /**
    * The transformation sign.
    */
-  private int sign;
+  private final int sign;
 
   /**
    * Creates a new Julia complex transformation.
@@ -36,5 +36,18 @@ public class JuliaTransform extends Transform2D {
     Complex subtracted = new Complex(subtractedRaw.getX0(), subtractedRaw.getX1());
     Complex root = subtracted.sqrt();
     return new Complex(root.getX0() * sign, root.getX1() * sign);
+  }
+
+  @Override
+  public String toSerializedString() {
+    StringBuilder str = new StringBuilder();
+    str.append(getClass().getSimpleName());
+    str.append("\n");
+
+    str.append(point.toSerializedString());
+    str.append(", ");
+    str.append(sign);
+
+    return str.toString();
   }
 }

@@ -1,11 +1,12 @@
 package no.ntnu.idi.stud.models;
 
 import java.util.Objects;
+import no.ntnu.idi.stud.serialization.Serializable;
 
 /**
  * A class representing a 2D vector.
  */
-public class Vector2D {
+public class Vector2D implements Serializable {
   /**
    * The first part of the vector
    */
@@ -24,6 +25,11 @@ public class Vector2D {
   public Vector2D(double x0, double x1) {
     this.x0 = x0;
     this.x1 = x1;
+  }
+
+  public static Vector2D fromString(String str) {
+    String[] parts = str.split(",");
+    return new Vector2D(Double.parseDouble(parts[0]), Double.parseDouble(parts[1]));
   }
 
   /**
@@ -82,5 +88,10 @@ public class Vector2D {
   @Override
   public String toString() {
     return String.format("Vector [%s, %s]", x0, x1);
+  }
+
+  @Override
+  public String toSerializedString() {
+    return String.format("%s,%s", getX0(), getX1());
   }
 }

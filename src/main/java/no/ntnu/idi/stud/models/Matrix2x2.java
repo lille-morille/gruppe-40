@@ -1,9 +1,11 @@
 package no.ntnu.idi.stud.models;
 
+import no.ntnu.idi.stud.serialization.Serializable;
+
 /**
  * A class representing a 2x2 matrix.
  */
-public class Matrix2x2 {
+public class Matrix2x2 implements Serializable {
   /**
    * The first row and first column of the matrix
    */
@@ -23,27 +25,34 @@ public class Matrix2x2 {
 
   /**
    * Gets the value a00 of the matrix
+   *
    * @return a00
    */
   public double getA00() {
     return a00;
   }
+
   /**
    * Gets the value a00 of the matrix
+   *
    * @return a01
    */
   public double getA01() {
     return a01;
   }
+
   /**
    * Gets the value a00 of the matrix
+   *
    * @return a10
    */
   public double getA10() {
     return a10;
   }
+
   /**
    * Gets the value a00 of the matrix
+   *
    * @return a11
    */
   public double getA11() {
@@ -65,6 +74,12 @@ public class Matrix2x2 {
     this.a11 = a11;
   }
 
+  public static Matrix2x2 fromString(String s) {
+    String[] parts = s.split(",");
+    return new Matrix2x2(Double.parseDouble(parts[0]), Double.parseDouble(parts[1]),
+        Double.parseDouble(parts[2]), Double.parseDouble(parts[3]));
+  }
+
 
   /**
    * Get the first row and first column of the matrix
@@ -78,5 +93,10 @@ public class Matrix2x2 {
   @Override
   public String toString() {
     return String.format("Matrix [[%s, %s], [%s, %s]]", a00, a01, a10, a11);
+  }
+
+  @Override
+  public String toSerializedString() {
+    return String.format("%s,%s,%s,%s", a00, a01, a10, a11);
   }
 }
