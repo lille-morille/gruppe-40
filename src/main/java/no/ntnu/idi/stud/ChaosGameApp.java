@@ -25,7 +25,7 @@ public class ChaosGameApp {
 
     ChaosCanvas chaosCanvas = chaosGame.getCanvas();
 
-    for (int j = chaosCanvas.getHeight() -1; j >= 0 ; j--) {
+    for (int j = chaosCanvas.getHeight() - 1; j >= 0; j--) {
       for (int i = 0; i < chaosCanvas.getWidth(); i++) {
         System.out.print(chaosCanvas.getPixel(new Vector2D(i, j)) > 0 ? "X" : " ");
       }
