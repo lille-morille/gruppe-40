@@ -1,6 +1,6 @@
-package no.ntnu.idi.stud.transformations;
+package no.ntnu.idi.stud.transformation;
 
-import no.ntnu.idi.stud.models.Vector2D;
+import no.ntnu.idi.stud.model.Vector2D;
 import no.ntnu.idi.stud.serialization.Serializable;
 
 /**

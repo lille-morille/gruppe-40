@@ -8,16 +8,18 @@ import no.ntnu.idi.stud.controller.ChaosGameController;
 public class ChaosGameView extends Application {
 
   @Override
-  public void start(Stage stage) throws Exception {
-    ChaosGameController controller = new ChaosGameController();
+  public void start(Stage stage) {
+    var canvasWidth = 500;
+    var canvasHeight = 500;
+
+    ChaosGameController controller = new ChaosGameController(canvasWidth, canvasHeight);
     var root = new BorderPane();
 
-    var canvas = new ChaosGameCanvas(600, 800);
-    controller.addObserver(canvas);
+    var canvas = new ChaosGameCanvas(canvasWidth, canvasHeight);
+    controller.getGame().addObserver(canvas);
     root.setCenter(canvas);
 
     var sidebar = new ChaosGameSidebar(controller);
-    controller.addObserver(sidebar);
     root.setLeft(sidebar);
 
     var scene = new javafx.scene.Scene(root);

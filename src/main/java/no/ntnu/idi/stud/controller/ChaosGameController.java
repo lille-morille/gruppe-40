@@ -1,47 +1,40 @@
 package no.ntnu.idi.stud.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-import no.ntnu.idi.stud.ChaosGame;
-import no.ntnu.idi.stud.ChaosGameDescription;
-import no.ntnu.idi.stud.observer.ChaosGameListener;
-import no.ntnu.idi.stud.observer.ChaosGameObserver;
+import java.io.IOException;
+import no.ntnu.idi.stud.model.ChaosGame;
+import no.ntnu.idi.stud.model.ChaosGameDescription;
+import no.ntnu.idi.stud.dispatch.ChaosGameListener;
+import no.ntnu.idi.stud.serialization.ChaosGameFileHandler;
 
 public class ChaosGameController implements ChaosGameListener {
-  private ChaosGame game;
-  private final List<ChaosGameObserver> observers;
+  private final ChaosGame game;
 
-  public ChaosGameController() {
-    this.observers = new ArrayList<>();
+  public ChaosGame getGame() {
+    return game;
+  }
+
+  public ChaosGameController(int width, int height) {
     var description = ChaosGameDescription.empty();
-    this.game = new ChaosGame(description, 0, 0);
-    notifyObservers();
-  }
-
-  public void addObserver(ChaosGameObserver observer) {
-    observers.add(observer);
-  }
-
-  public void runSteps(int steps) {
-    game.runSteps(steps);
-    notifyObservers();
-  }
-
-  public void setDescription(ChaosGameDescription description) {
-    game = new ChaosGame(description, 0, 0);
-    notifyObservers();
-  }
-
-  public void notifyObservers() {
-    for (ChaosGameObserver observer : observers) {
-      observer.updateCanvas(this.game.getCanvas());
-    }
+    this.game = new ChaosGame(description, width, height);
   }
 
   @Override
   public void onCreateGameClicked() {
-    var description = ChaosGameDescription.empty();
-    game = new ChaosGame(description, 0, 0);
-    notifyObservers();
+    ChaosGameDescription description = ChaosGameDescription.empty();
+    game.setDescription(description);
+  }
+
+  @Override
+  public void onLoadGameFromFileClicked() {
+    var path = "chaosgame.txt";
+    ChaosGameFileHandler fileHandler = new ChaosGameFileHandler();
+
+    try {
+      ChaosGameDescription description = fileHandler.readFromFile(path);
+      game.setDescription(description);
+      game.runSteps(1_000_000);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 }

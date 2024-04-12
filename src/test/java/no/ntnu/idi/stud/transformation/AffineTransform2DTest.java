@@ -1,9 +1,9 @@
-package no.ntnu.idi.stud.transformations;
+package no.ntnu.idi.stud.transformation;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import no.ntnu.idi.stud.models.Matrix2x2;
-import no.ntnu.idi.stud.models.Vector2D;
+import no.ntnu.idi.stud.model.Matrix2x2;
+import no.ntnu.idi.stud.model.Vector2D;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

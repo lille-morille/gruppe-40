@@ -1,4 +1,4 @@
-package no.ntnu.idi.stud.models;
+package no.ntnu.idi.stud.model;
 
 import no.ntnu.idi.stud.serialization.Serializable;
 

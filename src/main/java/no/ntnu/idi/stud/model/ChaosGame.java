@@ -1,12 +1,12 @@
-package no.ntnu.idi.stud;
+package no.ntnu.idi.stud.model;
 
 import java.util.Random;
-import no.ntnu.idi.stud.models.Vector2D;
+import no.ntnu.idi.stud.dispatch.ChaosGameObservable;
 
-public class ChaosGame {
-  private final ChaosCanvas chaosCanvas;
-  private final ChaosGameDescription description;
+public class ChaosGame extends ChaosGameObservable {
   private final Random random;
+  private final ChaosCanvas chaosCanvas;
+  private ChaosGameDescription description;
   private Vector2D currentPoint;
 
   public ChaosGame(ChaosGameDescription description, int width, int height) {
@@ -17,6 +17,13 @@ public class ChaosGame {
     this.description = description;
     this.random = new Random();
     this.currentPoint = new Vector2D(0, 0);
+  }
+
+  public void setDescription(ChaosGameDescription description) {
+    this.currentPoint = new Vector2D(0, 0);
+    this.description = description;
+    this.chaosCanvas.clear();
+    notifyObservers(this);
   }
 
   public ChaosCanvas getCanvas() {
@@ -31,5 +38,6 @@ public class ChaosGame {
       currentPoint = transform.transform(currentPoint);
       chaosCanvas.putPixel(currentPoint);
     }
+    notifyObservers(this);
   }
 }

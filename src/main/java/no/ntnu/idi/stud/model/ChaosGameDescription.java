@@ -1,8 +1,7 @@
-package no.ntnu.idi.stud;
+package no.ntnu.idi.stud.model;
 
 import java.util.List;
-import no.ntnu.idi.stud.models.Vector2D;
-import no.ntnu.idi.stud.transformations.Transform2D;
+import no.ntnu.idi.stud.transformation.Transform2D;
 
 /**
  * A class that describes a chaos game. It contains the minimum and maximum coordinates of the

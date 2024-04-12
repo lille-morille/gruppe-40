@@ -1,4 +1,4 @@
-package no.ntnu.idi.stud.models;
+package no.ntnu.idi.stud.model;
 
 /**
  * A class representing complex numbers and their operations.

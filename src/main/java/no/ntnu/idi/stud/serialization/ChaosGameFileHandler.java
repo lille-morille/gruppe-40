@@ -8,13 +8,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import no.ntnu.idi.stud.ChaosGameDescription;
-import no.ntnu.idi.stud.models.Complex;
-import no.ntnu.idi.stud.models.Matrix2x2;
-import no.ntnu.idi.stud.models.Vector2D;
-import no.ntnu.idi.stud.transformations.AffineTransform2D;
-import no.ntnu.idi.stud.transformations.JuliaTransform;
-import no.ntnu.idi.stud.transformations.Transform2D;
+import no.ntnu.idi.stud.model.ChaosGameDescription;
+import no.ntnu.idi.stud.model.Complex;
+import no.ntnu.idi.stud.model.Matrix2x2;
+import no.ntnu.idi.stud.model.Vector2D;
+import no.ntnu.idi.stud.transformation.AffineTransform2D;
+import no.ntnu.idi.stud.transformation.JuliaTransform;
+import no.ntnu.idi.stud.transformation.Transform2D;
 
 public class ChaosGameFileHandler {
   public ChaosGameDescription readFromFile(String path) throws IOException {

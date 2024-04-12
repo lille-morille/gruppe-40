@@ -2,22 +2,20 @@ package no.ntnu.idi.stud.view;
 
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
-import no.ntnu.idi.stud.ChaosCanvas;
-import no.ntnu.idi.stud.observer.ChaosGameListener;
-import no.ntnu.idi.stud.observer.ChaosGameObserver;
+import no.ntnu.idi.stud.dispatch.ChaosGameListener;
 
-public class ChaosGameSidebar extends VBox implements ChaosGameObserver {
+public class ChaosGameSidebar extends VBox {
   public ChaosGameSidebar(ChaosGameListener listener) {
     this.setPrefWidth(200);    // Set the width of the this
 
-    Button btn1 = new Button("Create new game");
-    btn1.addEventHandler(javafx.event.ActionEvent.ACTION, e -> listener.onCreateGameClicked());
+    Button createGameBtn = new Button("Create new game");
+    createGameBtn.addEventHandler(javafx.event.ActionEvent.ACTION,
+        e -> listener.onCreateGameClicked());
 
-    this.getChildren().addAll(btn1);
-  }
+    Button loadGameFromFileBtn = new Button("Load game from file");
+    loadGameFromFileBtn.addEventHandler(javafx.event.ActionEvent.ACTION,
+        e -> listener.onLoadGameFromFileClicked());
 
-  @Override
-  public void updateCanvas(ChaosCanvas canvas) {
-
+    this.getChildren().addAll(createGameBtn, loadGameFromFileBtn);
   }
 }

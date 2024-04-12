@@ -1,8 +1,6 @@
-package no.ntnu.idi.stud;
+package no.ntnu.idi.stud.model;
 
-import no.ntnu.idi.stud.models.Matrix2x2;
-import no.ntnu.idi.stud.models.Vector2D;
-import no.ntnu.idi.stud.transformations.AffineTransform2D;
+import no.ntnu.idi.stud.transformation.AffineTransform2D;
 
 /**
  * The type Chaos canvas.

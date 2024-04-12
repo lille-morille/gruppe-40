@@ -1,6 +1,6 @@
 package no.ntnu.idi.stud;
 
-import no.ntnu.idi.stud.models.Vector2D;
+import no.ntnu.idi.stud.model.Vector2D;
 
 /**
  * Assists testing classes with common utility functions
