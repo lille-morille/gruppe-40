@@ -1,5 +1,8 @@
 package no.ntnu.idi.stud.dispatch;
 
+import no.ntnu.idi.stud.model.Matrix2x2;
+import no.ntnu.idi.stud.model.Vector2D;
+
 /**
  * Describes all event listeners that need to be dispatched from the view to the controller.
  */
@@ -29,4 +32,8 @@ public interface ChaosGameEventHandler {
   void handleExitApp();
 
   void handleDeleteGame(String game);
+
+  void handleSetMatrix(int transformationIndex, Matrix2x2 matrix2x2);
+
+  void handleSetVector(int transformationIndex, Vector2D vector2D);
 }

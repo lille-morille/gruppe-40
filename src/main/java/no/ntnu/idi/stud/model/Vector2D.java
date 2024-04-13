@@ -1,12 +1,13 @@
 package no.ntnu.idi.stud.model;
 
 import java.util.Objects;
+import no.ntnu.idi.stud.dispatch.Observable;
 import no.ntnu.idi.stud.serialization.Serializable;
 
 /**
  * A class representing a 2D vector.
  */
-public class Vector2D implements Serializable {
+public class Vector2D extends Observable<Vector2D> implements Serializable {
   /**
    * The first part of the vector
    */
@@ -30,6 +31,16 @@ public class Vector2D implements Serializable {
   public static Vector2D fromString(String str) {
     String[] parts = str.split(",");
     return new Vector2D(Double.parseDouble(parts[0]), Double.parseDouble(parts[1]));
+  }
+
+  public void setX0(double x0) {
+    this.x0 = x0;
+    notifyObservers(this);
+  }
+
+  public void setX1(double x1) {
+    this.x1 = x1;
+    notifyObservers(this);
   }
 
   /**

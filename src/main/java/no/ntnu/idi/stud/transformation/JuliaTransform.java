@@ -49,4 +49,8 @@ public class JuliaTransform extends Transform2D {
 
     return str.toString();
   }
+
+  public Complex getComplex() {
+    return point;
+  }
 }

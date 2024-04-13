@@ -4,10 +4,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import no.ntnu.idi.stud.controller.ChaosGameController;
+import no.ntnu.idi.stud.view.transformations.TransformationsEditor;
 
 public class ChaosGameSidebar extends VBox {
   public ChaosGameSidebar(ChaosGameController controller) {
-    this.setPrefWidth(200);    // Set the width of the this
+    this.setPrefWidth(300);    // Set the width of the this
 
     // Create game
     Button createGameBtn = new Button("Create new game");
@@ -61,7 +62,7 @@ public class ChaosGameSidebar extends VBox {
     });
 
     // Transformations
-    TransformationsEditor transformationsEditor = new TransformationsEditor();
+    TransformationsEditor transformationsEditor = new TransformationsEditor(controller);
     controller.getGame().addObserver(transformationsEditor);
 
     // Exit app

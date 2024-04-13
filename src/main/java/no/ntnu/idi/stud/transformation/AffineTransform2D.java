@@ -28,6 +28,14 @@ public class AffineTransform2D extends Transform2D {
     this.vector = vector;
   }
 
+  public Matrix2x2 getMatrix() {
+    return matrix;
+  }
+
+  public Vector2D getVector() {
+    return vector;
+  }
+
   @Override
   public Vector2D transform(Vector2D point) {
     return matrix.multiply(point).add(vector);

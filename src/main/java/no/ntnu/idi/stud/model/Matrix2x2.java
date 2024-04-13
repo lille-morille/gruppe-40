@@ -1,11 +1,12 @@
 package no.ntnu.idi.stud.model;
 
+import no.ntnu.idi.stud.dispatch.Observable;
 import no.ntnu.idi.stud.serialization.Serializable;
 
 /**
  * A class representing a 2x2 matrix.
  */
-public class Matrix2x2 implements Serializable {
+public class Matrix2x2 extends Observable<Matrix2x2> implements Serializable {
   /**
    * The first row and first column of the matrix
    */
@@ -57,6 +58,26 @@ public class Matrix2x2 implements Serializable {
    */
   public double getA11() {
     return a11;
+  }
+
+  public void setA00(double a00) {
+    this.a00 = a00;
+    notifyObservers(this);
+  }
+
+  public void setA01(double a01) {
+    this.a01 = a01;
+    notifyObservers(this);
+  }
+
+  public void setA10(double a10) {
+    this.a10 = a10;
+    notifyObservers(this);
+  }
+
+  public void setA11(double a11) {
+    this.a11 = a11;
+    notifyObservers(this);
   }
 
   /**
