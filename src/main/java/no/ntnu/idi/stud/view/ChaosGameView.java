@@ -25,6 +25,7 @@ public class ChaosGameView extends Application {
     var scene = new javafx.scene.Scene(root);
     stage.setScene(scene);
 
+    controller.initialize();
     stage.show();
   }
 }

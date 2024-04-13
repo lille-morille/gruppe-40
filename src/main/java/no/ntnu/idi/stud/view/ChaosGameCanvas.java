@@ -5,9 +5,9 @@ import javafx.scene.canvas.GraphicsContext;
 import no.ntnu.idi.stud.model.ChaosCanvas;
 import no.ntnu.idi.stud.model.ChaosGame;
 import no.ntnu.idi.stud.model.Vector2D;
-import no.ntnu.idi.stud.dispatch.ChaosGameObserver;
+import no.ntnu.idi.stud.dispatch.Observer;
 
-public class ChaosGameCanvas extends Canvas implements ChaosGameObserver {
+public class ChaosGameCanvas extends Canvas implements Observer<ChaosGame>  {
   final double width;
   final double height;
 

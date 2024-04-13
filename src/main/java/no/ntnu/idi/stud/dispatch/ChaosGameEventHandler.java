@@ -17,4 +17,16 @@ public interface ChaosGameEventHandler {
   void handleFilePathChange(String newFilePath);
 
   void handleSaveGameToFile();
+
+  void handleStepCountChange(int newValue);
+
+  void handleMinCoordXChange(int newValue);
+
+  void handleMinCoordYChange(int newValue);
+
+  void handleMaxCoordXChange(int newValue);
+
+  void handleMaxCoordYChange(int newValue);
+
+  void handleExitApp();
 }

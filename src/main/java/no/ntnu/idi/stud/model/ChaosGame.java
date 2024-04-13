@@ -1,9 +1,9 @@
 package no.ntnu.idi.stud.model;
 
 import java.util.Random;
-import no.ntnu.idi.stud.dispatch.ChaosGameObservable;
+import no.ntnu.idi.stud.dispatch.Observable;
 
-public class ChaosGame extends ChaosGameObservable {
+public class ChaosGame extends Observable<ChaosGame> {
   private final Random random;
   private final ChaosCanvas chaosCanvas;
   private ChaosGameDescription description;

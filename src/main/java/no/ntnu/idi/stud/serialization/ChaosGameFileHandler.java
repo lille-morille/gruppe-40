@@ -5,9 +5,13 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 import no.ntnu.idi.stud.model.ChaosGameDescription;
 import no.ntnu.idi.stud.model.Complex;
 import no.ntnu.idi.stud.model.Matrix2x2;
@@ -17,8 +21,12 @@ import no.ntnu.idi.stud.transformation.JuliaTransform;
 import no.ntnu.idi.stud.transformation.Transform2D;
 
 public class ChaosGameFileHandler {
-  public ChaosGameDescription readFromFile(String path) throws IOException {
-    try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+  static final String FILE_EXTENSION = ".txt";
+  static final String BASE_PATH = "games/";
+
+  public ChaosGameDescription readFromFile(String name) throws IOException {
+    String fullPath = BASE_PATH + name + FILE_EXTENSION;
+    try (BufferedReader reader = new BufferedReader(new FileReader(fullPath))) {
       var minCoords = Vector2D.fromString(reader.readLine());
       var maxCoords = Vector2D.fromString(reader.readLine());
 
@@ -61,9 +69,10 @@ public class ChaosGameFileHandler {
     }
   }
 
-  public void writeToFile(ChaosGameDescription description, String path) throws IOException {
-    System.out.println("Writing ..." + path);
-    FileWriter writer = new FileWriter(path);
+  public void writeToFile(ChaosGameDescription description, String name) throws IOException {
+    String fullPath = BASE_PATH + name + FILE_EXTENSION;
+
+    FileWriter writer = new FileWriter(fullPath);
     BufferedWriter bufferedWriter = new BufferedWriter(writer);
     bufferedWriter.write(description.getMinCoords().toSerializedString());
     bufferedWriter.newLine();
@@ -76,5 +85,17 @@ public class ChaosGameFileHandler {
     }
 
     bufferedWriter.close();
+  }
+
+  public List<String> getSavedGames() {
+    List<String> savedGames = new ArrayList<>();
+    try (Stream<Path> paths = Files.walk(Paths.get(BASE_PATH))) {
+      paths
+          .filter(Files::isRegularFile)
+          .forEach(game -> savedGames.add(game.getFileName().toString()));
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+    return savedGames;
   }
 }
