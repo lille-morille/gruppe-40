@@ -12,11 +12,9 @@ public interface ChaosGameEventHandler {
   /**
    * Called when the user clicks the "Load Game" button.
    */
-  void handleLoadGameFromFile();
+  void handleLoadGameFromFile(String fileName);
 
-  void handleFilePathChange(String newFilePath);
-
-  void handleSaveGameToFile();
+  void handleSaveGameToFile(String fileName);
 
   void handleStepCountChange(int newValue);
 

@@ -90,9 +90,8 @@ public class ChaosGameFileHandler {
   public List<String> getSavedGames() {
     List<String> savedGames = new ArrayList<>();
     try (Stream<Path> paths = Files.walk(Paths.get(BASE_PATH))) {
-      paths
-          .filter(Files::isRegularFile)
-          .forEach(game -> savedGames.add(game.getFileName().toString()));
+      paths.filter(Files::isRegularFile).forEach(
+          game -> savedGames.add(game.getFileName().toString().replace(FILE_EXTENSION, "")));
     } catch (IOException e) {
       throw new RuntimeException(e);
     }

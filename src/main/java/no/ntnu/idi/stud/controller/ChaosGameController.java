@@ -13,7 +13,6 @@ public class ChaosGameController implements ChaosGameEventHandler {
   private final ChaosGameFileHandler fileHandler;
   private final int width;
   private final int height;
-  String filePath;
   private final SavedGames savedGames;
 
   public ChaosGame getGame() {
@@ -23,7 +22,6 @@ public class ChaosGameController implements ChaosGameEventHandler {
   public ChaosGameController(int width, int height) {
     var description = ChaosGameDescription.empty();
     this.game = new ChaosGame(description, width, height);
-    this.filePath = "";
     this.fileHandler = new ChaosGameFileHandler();
     this.width = width;
     this.height = height;
@@ -46,9 +44,9 @@ public class ChaosGameController implements ChaosGameEventHandler {
   }
 
   @Override
-  public void handleLoadGameFromFile() {
+  public void handleLoadGameFromFile(String name) {
     try {
-      ChaosGameDescription description = fileHandler.readFromFile(filePath);
+      ChaosGameDescription description = fileHandler.readFromFile(name);
       game.setDescription(description);
       game.runSteps(1_000_000);
     } catch (IOException e) {
@@ -57,15 +55,10 @@ public class ChaosGameController implements ChaosGameEventHandler {
   }
 
   @Override
-  public void handleFilePathChange(String newFilePath) {
-    System.out.println("Changing to " + newFilePath);
-    this.filePath = newFilePath;
-  }
-
-  @Override
-  public void handleSaveGameToFile() {
+  public void handleSaveGameToFile(String name) {
     try {
-      fileHandler.writeToFile(game.getDescription(), filePath);
+      fileHandler.writeToFile(game.getDescription(), name);
+      savedGames.addSavedGame(name);
     } catch (IOException e) {
       e.printStackTrace();
     }
