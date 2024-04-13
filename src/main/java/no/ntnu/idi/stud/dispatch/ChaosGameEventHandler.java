@@ -27,4 +27,6 @@ public interface ChaosGameEventHandler {
   void handleMaxCoordYChange(int newValue);
 
   void handleExitApp();
+
+  void handleDeleteGame(String game);
 }

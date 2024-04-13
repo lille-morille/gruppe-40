@@ -12,8 +12,10 @@ public class SavedGames extends Observable<List<String>> {
   }
 
   public void addSavedGame(String game) {
-    savedGames.add(game);
-    notifyObservers(savedGames);
+    if (!savedGames.contains(game)) {
+      savedGames.add(game);
+      notifyObservers(savedGames);
+    }
   }
 
   public void removeSavedGame(String game) {

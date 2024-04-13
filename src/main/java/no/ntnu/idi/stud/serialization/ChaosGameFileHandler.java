@@ -97,4 +97,13 @@ public class ChaosGameFileHandler {
     }
     return savedGames;
   }
+
+  public void deleteFile(String game) {
+    try {
+      Files.delete(Paths.get
+          (BASE_PATH + game + FILE_EXTENSION));
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
 }
