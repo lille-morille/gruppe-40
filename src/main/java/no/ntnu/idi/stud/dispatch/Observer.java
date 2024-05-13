@@ -7,8 +7,8 @@ import no.ntnu.idi.stud.model.ChaosGame;
  */
 public interface Observer<T> {
   /**
-   * Called whenever the game has been updated.
-   * @param game The new game to display.
+   * Called whenever the resource (that is listened to) has been updated.
+   * @param resource The resource that has been updated
    */
   void onNotified(T resource);
 }
