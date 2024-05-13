@@ -104,29 +104,17 @@ public class ChaosGameController implements ChaosGameEventHandler {
   }
 
   @Override
-  public void handleStepCountChange(int newValue) {
-    this.stepCount = newValue;
+  public void handleSaveMinMaxCoords(Vector2D minCoords, Vector2D maxCoords) {
+    var description = game.getDescription();
+    description.setMinCoords(minCoords);
+    description.setMaxCoords(maxCoords);
     reloadCanvas();
   }
 
   @Override
-  public void handleMinCoordXChange(int newValue) {
-
-  }
-
-  @Override
-  public void handleMinCoordYChange(int newValue) {
-
-  }
-
-  @Override
-  public void handleMaxCoordXChange(int newValue) {
-
-  }
-
-  @Override
-  public void handleMaxCoordYChange(int newValue) {
-
+  public void handleStepCountChange(int newValue) {
+    this.stepCount = newValue;
+    reloadCanvas();
   }
 
   @Override

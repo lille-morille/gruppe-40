@@ -21,14 +21,6 @@ public interface ChaosGameEventHandler {
 
   void handleStepCountChange(int newValue);
 
-  void handleMinCoordXChange(int newValue);
-
-  void handleMinCoordYChange(int newValue);
-
-  void handleMaxCoordXChange(int newValue);
-
-  void handleMaxCoordYChange(int newValue);
-
   void handleExitApp();
 
   void handleDeleteGame(String game);
@@ -36,4 +28,6 @@ public interface ChaosGameEventHandler {
   void handleSetMatrix(int transformationIndex, Matrix2x2 matrix2x2);
 
   void handleSetVector(int transformationIndex, Vector2D vector2D);
+
+  void handleSaveMinMaxCoords(Vector2D minCoords, Vector2D maxCoords);
 }

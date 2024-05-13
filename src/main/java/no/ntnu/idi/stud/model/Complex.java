@@ -1,5 +1,7 @@
 package no.ntnu.idi.stud.model;
 
+import java.util.Random;
+
 /**
  * A class representing complex numbers and their operations.
  */
@@ -18,14 +20,17 @@ public class Complex extends Vector2D {
   }
 
   /**
-   * Returns the complex conjugate of this complex number.
-   * @return the complex conjugate of this complex numberk
+   * Returns the randomized complex conjugate of this complex number.
+   * @return the randomized complex conjugate of this complex number
    */
   public Complex sqrt() {
-    double r = Math.sqrt(getX0() * getX0() + getX1() * getX1());
-    double x0 = Math.sqrt((r + getX0()) / 2);
-    double x1 = (Math.sqrt((r - getX0()) / 2)) * Math.signum(getX1());
-    return new Complex(x0, x1);
+    double a = Math.pow(getX0(), 2) + Math.pow(getX1(), 2);
+    int random = new Random().nextInt(2) == 0 ? 1 : -1;
+
+    double r = random * Math.sqrt(0.5 * (Math.sqrt(a)) + getX0());
+    double i = random * Math.signum(getX1()) * Math.sqrt(0.5 * (Math.sqrt(a) - getX0()));
+
+    return new Complex(r, i);
   }
 
   @Override

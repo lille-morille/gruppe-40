@@ -11,17 +11,25 @@ public class ChaosGameDescription {
   /**
    * The minimum and maximum coordinates of the game.
    */
-  private final Vector2D minCoords;
+  private  Vector2D minCoords;
 
   /**
    * The maximum coordinates of the game.
    */
-  private final Vector2D maxCoords;
+  private  Vector2D maxCoords;
 
   /**
    * The transformations that are used to generate the fractal.
    */
   private final List<Transform2D> transforms;
+
+  public void setMinCoords(Vector2D minCoords) {
+    this.minCoords = minCoords;
+  }
+
+  public void setMaxCoords(Vector2D maxCoords) {
+    this.maxCoords = maxCoords;
+  }
 
   /**
    * Create a new chaos game description.

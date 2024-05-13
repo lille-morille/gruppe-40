@@ -3,7 +3,6 @@ package no.ntnu.idi.stud.view.transformations;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import no.ntnu.idi.stud.controller.ChaosGameController;
 import no.ntnu.idi.stud.dispatch.Observer;
