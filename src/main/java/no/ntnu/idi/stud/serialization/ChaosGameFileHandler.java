@@ -43,9 +43,8 @@ public class ChaosGameFileHandler {
 
         if (transformation.equals(JuliaTransform.class.getSimpleName())) {
           var point = Complex.fromString(parts[0]);
-          var sign = Integer.parseInt(parts[1]);
 
-          transformations.add(new JuliaTransform(point, sign));
+          transformations.add(new JuliaTransform(point));
         } else {
           System.out.println(Arrays.toString(parts));
           var matrix = Matrix2x2.fromString(parts[0]);

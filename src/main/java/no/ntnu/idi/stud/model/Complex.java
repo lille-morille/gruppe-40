@@ -1,14 +1,12 @@
 package no.ntnu.idi.stud.model;
 
-import java.util.Random;
-
 /**
  * A class representing complex numbers and their operations.
  */
 public class Complex extends Vector2D {
 
   /**
-    * Constructs a new complex number with the given real and imaginary parts.
+   * Constructs a new complex number with the given real and imaginary parts.
    */
   public Complex(double realPart, double imaginaryPart) {
     super(realPart, imaginaryPart);
@@ -21,16 +19,23 @@ public class Complex extends Vector2D {
 
   /**
    * Returns the randomized complex conjugate of this complex number.
+   *
    * @return the randomized complex conjugate of this complex number
    */
   public Complex sqrt() {
-    double a = Math.pow(getX0(), 2) + Math.pow(getX1(), 2);
-    int random = new Random().nextInt(2) == 0 ? 1 : -1;
+    double r = getX0();
+    double i = getX1();
 
-    double r = random * Math.sqrt(0.5 * (Math.sqrt(a)) + getX0());
-    double i = random * Math.signum(getX1()) * Math.sqrt(0.5 * (Math.sqrt(a) - getX0()));
+    double complexLength = Math.sqrt(r * r + i * i);
 
-    return new Complex(r, i);
+    double sqrtReal = Math.sqrt((complexLength + r) / 2);
+    double sqrtImaginary = 0;
+
+    if (i != 0) {
+      sqrtImaginary = (i / Math.abs(i)) * Math.sqrt((complexLength - r) / 2);
+    }
+
+    return new Complex(sqrtReal, sqrtImaginary);
   }
 
   @Override

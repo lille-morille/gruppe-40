@@ -10,8 +10,8 @@ public class ChaosGame extends Observable<ChaosGame> {
   private Vector2D currentPoint;
 
   public ChaosGame(ChaosGameDescription description, int width, int height) {
-    Vector2D minCoords = new Vector2D(0, 0);
-    Vector2D maxCoords = new Vector2D(1, 1);
+    Vector2D minCoords = new Vector2D(-1.6, -1);
+    Vector2D maxCoords = new Vector2D(1.6, 1);
 
     this.chaosCanvas = new ChaosCanvas(width, height, minCoords, maxCoords);
     this.description = description;
