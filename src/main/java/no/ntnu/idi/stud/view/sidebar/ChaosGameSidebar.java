@@ -1,11 +1,12 @@
-package no.ntnu.idi.stud.view;
+package no.ntnu.idi.stud.view.sidebar;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import no.ntnu.idi.stud.controller.ChaosGameController;
 import no.ntnu.idi.stud.model.Vector2D;
-import no.ntnu.idi.stud.view.transformations.TransformationsEditor;
+import no.ntnu.idi.stud.view.SavedGamesView;
+import no.ntnu.idi.stud.view.sidebar.section.transformations.TransformationsEditor;
 
 public class ChaosGameSidebar extends VBox {
   public ChaosGameSidebar(ChaosGameController controller) {

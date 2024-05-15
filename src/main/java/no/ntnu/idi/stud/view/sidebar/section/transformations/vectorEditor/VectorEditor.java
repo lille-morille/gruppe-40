@@ -1,4 +1,4 @@
-package no.ntnu.idi.stud.view.transformations;
+package no.ntnu.idi.stud.view.sidebar.section.transformations.vectorEditor;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
