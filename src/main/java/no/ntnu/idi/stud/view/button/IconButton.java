@@ -23,8 +23,8 @@ public class IconButton extends HBox implements StyledComponent {
     getStyleClass().add("icon-button");
 
     Icon iconView = new Icon(icon);
-    iconView.fitWidthProperty().setValue(10);
-    iconView.fitHeightProperty().setValue(10);
+    iconView.fitWidthProperty().setValue(15);
+    iconView.fitHeightProperty().setValue(15);
 
     getChildren().add(iconView);
 
