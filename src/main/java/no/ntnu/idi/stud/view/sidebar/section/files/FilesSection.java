@@ -1,18 +1,28 @@
 package no.ntnu.idi.stud.view.sidebar.section.files;
 
 import javafx.scene.control.TitledPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
 import no.ntnu.idi.stud.view.StyledComponent;
 import no.ntnu.idi.stud.view.sidebar.filetree.custom.CustomFileTreeController;
-import no.ntnu.idi.stud.view.sidebar.filetree.templates.CustomFileTreeView;
+import no.ntnu.idi.stud.view.sidebar.filetree.custom.CustomFileTreeView;
 import no.ntnu.idi.stud.view.sidebar.filetree.templates.TemplatesFileTree;
 
+/**
+ * Section for displaying and interacting with files.
+ */
 public class FilesSection extends TitledPane implements StyledComponent {
+  /**
+   * Construct a new FilesSection.
+   */
   public FilesSection() {
-    addStylesheet("/sidebar/section/section");
+    addStylesheet("sidebar/section/section");
     this.setText("Files");
 
-    VBox content = new VBox();
+    TreeView<String> treeView = new TreeView<>();
+    treeView.showRootProperty().set(false);
+
+    TreeItem<String> rootItem = new TreeItem<>();
 
     var templatesView = new TemplatesFileTree();
 
@@ -21,8 +31,9 @@ public class FilesSection extends TitledPane implements StyledComponent {
     customFileTreeController.getModel().addObserver(customView);
     customFileTreeController.init();
 
-    content.getChildren().addAll(templatesView, customView);
+    rootItem.getChildren().addAll(templatesView, customView);
+    treeView.setRoot(rootItem);
 
-    this.setContent(content);
+    this.setContent(treeView);
   }
 }

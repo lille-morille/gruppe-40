@@ -1,4 +1,4 @@
-package no.ntnu.idi.stud.view.icon;
+package no.ntnu.idi.stud.view;
 
 import java.util.Objects;
 import javafx.scene.image.Image;
