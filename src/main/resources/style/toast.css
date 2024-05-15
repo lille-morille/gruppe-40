@@ -1,0 +1,5 @@
+.toast {
+    -fx-background-radius: 20;
+    -fx-background-color: rgba(0, 0, 0, 0.2);
+    -fx-padding: 50px;
+}

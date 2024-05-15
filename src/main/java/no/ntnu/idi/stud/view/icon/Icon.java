@@ -4,6 +4,7 @@ import java.util.Objects;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+/// An icon component
 public class Icon extends ImageView {
   /**
    * Creates an icon by name
@@ -13,5 +14,7 @@ public class Icon extends ImageView {
   public Icon(String name) {
     super(new Image(
         Objects.requireNonNull(Icon.class.getResourceAsStream("/icons/" + name + ".png"))));
+    this.setFitHeight(15);
+    this.setFitWidth(15);
   }
 }
