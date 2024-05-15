@@ -6,7 +6,8 @@ import org.jetbrains.annotations.NotNull;
 
 public interface StyledComponent {
   default void addStylesheet(@NotNull String path) {
-    String url = (Objects.requireNonNull(getClass().getResource("/style" + path))).toExternalForm();
+    String url =
+        (Objects.requireNonNull(getClass().getResource("/style" + path + ".css"))).toExternalForm();
     getStylesheets().add(url);
   }
 
