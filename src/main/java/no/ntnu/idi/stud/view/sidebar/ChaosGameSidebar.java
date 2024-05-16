@@ -8,6 +8,8 @@ import javafx.scene.layout.VBox;
 import no.ntnu.idi.stud.controller.ChaosGameController;
 import no.ntnu.idi.stud.model.Vector2D;
 import no.ntnu.idi.stud.view.SavedGamesView;
+import no.ntnu.idi.stud.view.Toast;
+import no.ntnu.idi.stud.view.button.IconTextButton;
 import no.ntnu.idi.stud.view.sidebar.section.files.FilesSection;
 import no.ntnu.idi.stud.view.sidebar.section.transformations.TransformationsEditor;
 

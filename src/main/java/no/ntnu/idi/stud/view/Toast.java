@@ -3,11 +3,10 @@ package no.ntnu.idi.stud.view;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -17,41 +16,61 @@ import no.ntnu.idi.stud.singleton.StageSingleton;
 /**
  * A class for creating toast messages.
  */
-public class Toast extends VBox implements StyledComponent {
+public class Toast extends StackPane implements StyledComponent {
   public Toast(String message, Variant variant) {
     addStylesheet("toast");
     this.message = message;
+    this.variant = variant;
   }
 
   public enum Variant {
-    SUCCESS,
-    ERROR,
-    INFO
+    SUCCESS, ERROR, INFO
   }
 
   final String message;
+  final Variant variant;
 
   public void show() {
     Stage toastStage = new Stage();
     toastStage.initOwner(StageSingleton.getInstance().stage);
     toastStage.setResizable(false);
     toastStage.initStyle(StageStyle.TRANSPARENT);
+    toastStage.setAlwaysOnTop(true);
 
     Text text = new Text(message);
-    text.setFont(Font.font("Verdana", 40));
-    text.setFill(Color.RED);
 
-    StackPane root = new StackPane(text);
-    root.getStyleClass().add("toast");
-    root.setOpacity(0);
+    getStyleClass().add("toast");
+    getChildren().add(text);
+    setOpacity(0);
+    setAlignment(Pos.BOTTOM_RIGHT);
 
-    Scene scene = new Scene(root);
+    switch (variant) {
+      case SUCCESS:
+        getStyleClass().add("success");
+        break;
+      case ERROR:
+        getStyleClass().add("error");
+        break;
+      case INFO:
+        getStyleClass().add("info");
+        break;
+    }
+
+
+    Scene scene = new Scene(this);
     scene.setFill(Color.TRANSPARENT);
     toastStage.setScene(scene);
+
+    // Position the toast in the bottom right corner of the parent window
+    Stage ownerStage = StageSingleton.getInstance().stage;
+    double xOffset = ownerStage.getX() + ownerStage.getWidth() - 150; // Adjust width if needed
+    double yOffset = ownerStage.getY() + ownerStage.getHeight() - 80; // Adjust height if needed
+    toastStage.setX(xOffset);
+    toastStage.setY(yOffset);
     toastStage.show();
 
     Timeline fadeInTimeline = new Timeline();
-    KeyFrame fadeInKey1 = new KeyFrame(Duration.millis(500),
+    KeyFrame fadeInKey1 = new KeyFrame(Duration.millis(200),
         new KeyValue(toastStage.getScene().getRoot().opacityProperty(), 1));
     fadeInTimeline.getKeyFrames().add(fadeInKey1);
     fadeInTimeline.setOnFinished((ae) -> {
@@ -62,7 +81,7 @@ public class Toast extends VBox implements StyledComponent {
           throw new RuntimeException(e);
         }
         Timeline fadeOutTimeline = new Timeline();
-        KeyFrame fadeOutKey1 = new KeyFrame(Duration.millis(1500),
+        KeyFrame fadeOutKey1 = new KeyFrame(Duration.millis(500),
             new KeyValue(toastStage.getScene().getRoot().opacityProperty(), 0));
         fadeOutTimeline.getKeyFrames().add(fadeOutKey1);
         fadeOutTimeline.setOnFinished((aeb) -> toastStage.close());
