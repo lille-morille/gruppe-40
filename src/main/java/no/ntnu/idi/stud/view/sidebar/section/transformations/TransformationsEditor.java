@@ -1,4 +1,4 @@
-package no.ntnu.idi.stud.view.transformations;
+package no.ntnu.idi.stud.view.sidebar.section.transformations;
 
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -7,6 +7,8 @@ import no.ntnu.idi.stud.dispatch.Observer;
 import no.ntnu.idi.stud.model.ChaosGame;
 import no.ntnu.idi.stud.transformation.AffineTransform2D;
 import no.ntnu.idi.stud.transformation.JuliaTransform;
+import no.ntnu.idi.stud.view.sidebar.section.transformations.matrixEditor.MatrixEditor;
+import no.ntnu.idi.stud.view.sidebar.section.transformations.vectorEditor.VectorEditor;
 
 public class TransformationsEditor extends VBox implements Observer<ChaosGame> {
   private final ChaosGameController controller;

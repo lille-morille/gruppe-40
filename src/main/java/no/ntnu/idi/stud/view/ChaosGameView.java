@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import no.ntnu.idi.stud.controller.ChaosGameController;
+import no.ntnu.idi.stud.view.sidebar.ChaosGameSidebar;
 
 public class ChaosGameView extends Application {
 
