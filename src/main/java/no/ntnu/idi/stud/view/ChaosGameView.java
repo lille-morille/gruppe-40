@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import no.ntnu.idi.stud.controller.ChaosGameController;
+import no.ntnu.idi.stud.singleton.ChaosGameControllerSingleton;
 import no.ntnu.idi.stud.singleton.StageSingleton;
 import no.ntnu.idi.stud.view.sidebar.ChaosGameSidebar;
 
@@ -15,15 +16,16 @@ public class ChaosGameView extends Application {
     var canvasHeight = 500;
 
     StageSingleton.createWithStage(stage);
+    ChaosGameController controller = new ChaosGameController();
+    ChaosGameControllerSingleton.createWithController(controller);
 
-    ChaosGameController controller = new ChaosGameController(canvasWidth, canvasHeight);
     var root = new BorderPane();
 
     var canvas = new ChaosGameCanvas(canvasWidth, canvasHeight);
     controller.getGame().addObserver(canvas);
     root.setCenter(canvas);
 
-    var sidebar = new ChaosGameSidebar(controller);
+    var sidebar = new ChaosGameSidebar();
     root.setLeft(sidebar);
 
     var scene = new javafx.scene.Scene(root);

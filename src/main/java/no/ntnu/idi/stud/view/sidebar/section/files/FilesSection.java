@@ -7,16 +7,21 @@ import javafx.scene.control.TreeView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import no.ntnu.idi.stud.model.ChaosGameDescription;
 import no.ntnu.idi.stud.view.StyledComponent;
 import no.ntnu.idi.stud.view.button.IconTextButton;
-import no.ntnu.idi.stud.view.sidebar.filetree.custom.CustomFileTreeController;
+import no.ntnu.idi.stud.view.sidebar.filetree.FileTreeController;
 import no.ntnu.idi.stud.view.sidebar.filetree.custom.CustomFileTreeView;
-import no.ntnu.idi.stud.view.sidebar.filetree.templates.TemplatesFileTree;
+import no.ntnu.idi.stud.view.sidebar.filetree.templates.TemplatesFileTreeView;
 
 /**
  * Section for displaying and interacting with files.
  */
 public class FilesSection extends TitledPane implements StyledComponent {
+  FileTreeController fileTreeController;
+  ChaosGameDescription currenDescription;
+  String currentName;
+
   /**
    * Construct a new FilesSection.
    */
@@ -29,15 +34,22 @@ public class FilesSection extends TitledPane implements StyledComponent {
     // Trees
     TreeView<String> treeView = new TreeView<>();
     treeView.showRootProperty().set(false);
+    treeView.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+      TreeItem<String> item = treeView.getSelectionModel().getSelectedItem();
+      if (item != null) {
+        fileTreeController.onSelectGame(item.getValue());
+      }
+    });
 
     TreeItem<String> rootItem = new TreeItem<>();
 
-    var templatesView = new TemplatesFileTree();
+    fileTreeController = new FileTreeController();
 
-    var customFileTreeController = new CustomFileTreeController();
-    var customView = new CustomFileTreeView(customFileTreeController);
-    customFileTreeController.getModel().addObserver(customView);
-    customFileTreeController.init();
+    var templatesView = new TemplatesFileTreeView(fileTreeController);
+    fileTreeController.getModel().addObserver(templatesView);
+    var customView = new CustomFileTreeView(fileTreeController);
+    fileTreeController.getModel().addObserver(customView);
+    fileTreeController.init();
 
     rootItem.getChildren().addAll(templatesView, customView);
     treeView.setRoot(rootItem);
@@ -50,8 +62,7 @@ public class FilesSection extends TitledPane implements StyledComponent {
 
     IconTextButton newFileButton =
         new IconTextButton("New File", "plus", this::handleNewFileClicked);
-    IconTextButton saveButton =
-        new IconTextButton("Save", "download", this::handleSaveClicked);
+    IconTextButton saveButton = new IconTextButton("Save", "download", this::handleSaveClicked);
 
     buttonGroup.getChildren().addAll(newFileButton, saveButton);
 
@@ -61,10 +72,10 @@ public class FilesSection extends TitledPane implements StyledComponent {
   }
 
   void handleNewFileClicked(MouseEvent event) {
-
+    fileTreeController.onCreateDescription();
   }
 
   void handleSaveClicked(MouseEvent event) {
-
+    fileTreeController.onSaveDescription(currenDescription, currentName);
   }
 }

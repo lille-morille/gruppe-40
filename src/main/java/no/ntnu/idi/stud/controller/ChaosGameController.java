@@ -21,9 +21,8 @@ public class ChaosGameController implements ChaosGameEventHandler {
     return game;
   }
 
-  public ChaosGameController(int width, int height) {
-    var description = ChaosGameDescription.empty();
-    this.game = new ChaosGame(description, width, height);
+  public ChaosGameController() {
+    this.game = new ChaosGame();
     this.fileHandler = new ChaosGameFileHandler();
     this.savedGames = new SavedGames();
   }

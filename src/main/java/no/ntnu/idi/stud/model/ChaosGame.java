@@ -4,15 +4,15 @@ import java.util.Random;
 import no.ntnu.idi.stud.dispatch.Observable;
 
 public class ChaosGame extends Observable<ChaosGame> {
-  private final Random random;
-  private final ChaosCanvas chaosCanvas;
+  private Random random;
+  private ChaosCanvas chaosCanvas;
   private ChaosGameDescription description;
   private Vector2D currentPoint;
 
-  public ChaosGame(ChaosGameDescription description, int width, int height) {
-    Vector2D minCoords = new Vector2D(-1.6, -1);
-    Vector2D maxCoords = new Vector2D(1.6, 1);
+  public ChaosGame() { }
 
+  public ChaosGame(ChaosGameDescription description, int width, int height, Vector2D minCoords,
+                   Vector2D maxCoords) {
     this.chaosCanvas = new ChaosCanvas(width, height, minCoords, maxCoords);
     this.description = description;
     this.random = new Random();
@@ -24,6 +24,10 @@ public class ChaosGame extends Observable<ChaosGame> {
     this.description = description;
     this.chaosCanvas.clear();
     notifyObservers(this);
+  }
+
+  public void setChaosCanvas(ChaosCanvas chaosCanvas) {
+    this.chaosCanvas = chaosCanvas;
   }
 
   public ChaosGameDescription getDescription() {

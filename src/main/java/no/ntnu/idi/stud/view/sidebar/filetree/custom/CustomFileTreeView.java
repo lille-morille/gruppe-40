@@ -3,19 +3,22 @@ package no.ntnu.idi.stud.view.sidebar.filetree.custom;
 import javafx.scene.control.TreeItem;
 import no.ntnu.idi.stud.dispatch.Observer;
 import no.ntnu.idi.stud.view.Icon;
+import no.ntnu.idi.stud.view.sidebar.filetree.FileTreeController;
 
 /**
  * A tree-view showing all available chaos-game templates.
  */
 public class CustomFileTreeView extends TreeItem<String>
     implements Observer<CustomFileTreeModel> {
-  CustomFileTreeController controller;
+  FileTreeController controller;
+
+  public static String name = "Custom";
 
   /**
    * Creates a new tree-view showing all available chaos-game templates.
    */
-  public CustomFileTreeView(CustomFileTreeController controller) {
-    super("Custom", new Icon("pen"));
+  public CustomFileTreeView(FileTreeController controller) {
+    super(name, new Icon("pen"));
     this.controller = controller;
   }
 
@@ -24,7 +27,8 @@ public class CustomFileTreeView extends TreeItem<String>
     this.getChildren().clear();
 
     for (String template : model.getDescriptions()) {
-      TreeItem<String> item = new CustomFileTreeItem(template, controller);
+      boolean isSelected = controller.getIsGameSelected(template);
+      TreeItem<String> item = new CustomFileTreeItem(template, controller, isSelected, true);
       getChildren().add(item);
     }
   }

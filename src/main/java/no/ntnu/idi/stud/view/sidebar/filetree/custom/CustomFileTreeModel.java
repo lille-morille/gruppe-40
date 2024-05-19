@@ -9,24 +9,36 @@ public class CustomFileTreeModel extends Observable<CustomFileTreeModel> {
 
   private List<String> descriptions;
 
+  private String selectedDescription;
+
   public List<String> getDescriptions() {
     return descriptions;
   }
 
-  void loadDescriptions(List<String> descriptions) {
+  public void loadDescriptions(List<String> descriptions) {
     this.descriptions = descriptions;
     notifyObservers(this);
   }
 
-  void deleteDescription(String name) {
+  public void deleteDescription(String name) {
     descriptions.stream().filter(d -> d.equals(name)).findFirst().ifPresent(d -> {
       descriptions.remove(d);
       notifyObservers(this);
     });
   }
 
-  void createDescription(String name) {
+  public void createDescription(String name) {
     descriptions.add(name);
+    selectedDescription = name;
+    notifyObservers(this);
+  }
+
+  public String getSelectedDescription() {
+    return selectedDescription;
+  }
+
+  public void setSelectedDescription(String selectedDescription) {
+    this.selectedDescription = selectedDescription;
     notifyObservers(this);
   }
 }

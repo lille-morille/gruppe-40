@@ -1,20 +1,13 @@
 package no.ntnu.idi.stud.view.sidebar;
 
-import java.util.AbstractCollection;
 import javafx.scene.control.Accordion;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import no.ntnu.idi.stud.controller.ChaosGameController;
-import no.ntnu.idi.stud.model.Vector2D;
-import no.ntnu.idi.stud.view.SavedGamesView;
-import no.ntnu.idi.stud.view.Toast;
-import no.ntnu.idi.stud.view.button.IconTextButton;
 import no.ntnu.idi.stud.view.sidebar.section.files.FilesSection;
-import no.ntnu.idi.stud.view.sidebar.section.transformations.TransformationsEditor;
+import no.ntnu.idi.stud.view.sidebar.section.options.OptionsSection;
+import no.ntnu.idi.stud.view.sidebar.section.transformations.TransformationsSection;
 
 public class ChaosGameSidebar extends VBox {
-  public ChaosGameSidebar(ChaosGameController controller) {
+  public ChaosGameSidebar() {
     this.setPrefWidth(300);    // Set the width of the this
 
     // Parent accordion
@@ -23,7 +16,11 @@ public class ChaosGameSidebar extends VBox {
     // Files section
     final FilesSection files = new FilesSection();
 
-    accordion.getPanes().add(files);
+    final TransformationsSection transformations = new TransformationsSection();
+
+    final OptionsSection options = new OptionsSection();
+
+    accordion.getPanes().addAll(files, transformations, options);
 
     getChildren().add(accordion);
 
