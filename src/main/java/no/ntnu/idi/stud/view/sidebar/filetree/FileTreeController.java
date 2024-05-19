@@ -1,8 +1,10 @@
 package no.ntnu.idi.stud.view.sidebar.filetree;
 
 import java.io.IOException;
+import no.ntnu.idi.stud.controller.ChaosGameFactory;
 import no.ntnu.idi.stud.model.ChaosGameDescription;
 import no.ntnu.idi.stud.serialization.ChaosGameFileHandler;
+import no.ntnu.idi.stud.singleton.ChaosGameControllerSingleton;
 import no.ntnu.idi.stud.view.Toast;
 import no.ntnu.idi.stud.view.dialog.confirmDialog.ConfirmDialogBuilder;
 import no.ntnu.idi.stud.view.dialog.textInputDialog.TextInputDialogBuilder;
@@ -85,7 +87,7 @@ public class FileTreeController {
    * @param name        The name of the description
    */
   public void onSaveDescription(ChaosGameDescription description, String name) {
-    if(description == null) {
+    if (description == null) {
       return;
     }
     try {
@@ -106,6 +108,27 @@ public class FileTreeController {
       return;
     }
     model.setSelectedDescription(name);
+    var description = getDescription(name);
+    if(description == null) {
+      return;
+    }
+
+    ChaosGameControllerSingleton.getInstance().controller.getGame()
+        .setDescription(description);
+  }
+
+  private ChaosGameDescription getDescription(String name) {
+    // If custom, read from file
+    if(model.getDescriptions().contains(name)) {
+      try {
+        return fileHandler.readFromFile(name);
+      } catch (IOException e) {
+        new Toast("Failed to load game", Toast.Variant.ERROR).show();
+        return null;
+      }
+    } else {
+      return null;
+    }
   }
 
   private boolean isGameInvalid(String name) {
