@@ -1,7 +1,10 @@
-package no.ntnu.idi.stud.view.dialog.textInputDialog;
+package no.ntnu.idi.stud.view.dialog.textinputdialog;
 
 import java.util.function.Consumer;
 
+/**
+ * A builder for creating a text input dialog.
+ */
 public class TextInputDialogBuilder {
   private String prompt;
   private String confirmButtonText;

@@ -3,8 +3,9 @@ package no.ntnu.idi.stud.singleton;
 import no.ntnu.idi.stud.controller.ChaosGameController;
 
 /**
- * Singleton class for managing the Stage of the application
- * Is used by for example the Toast component to render on the stage
+ * Singleton class for managing the Stage of the application.
+ *
+ * <p>Is used by for example the Toast component to render on the stage
  */
 public class ChaosGameControllerSingleton {
   // Static variable reference of single_instance
@@ -15,12 +16,17 @@ public class ChaosGameControllerSingleton {
   public ChaosGameController controller;
 
   /**
-   * Creates the singleton
+   * Creates the singleton.
    */
   private ChaosGameControllerSingleton(ChaosGameController controller) {
     this.controller = controller;
   }
 
+  /**
+   * Instantiates the singleton with a controller.
+   *
+   * @param controller The controller to use.
+   */
   public static void createWithController(ChaosGameController controller) {
     if (single_instance == null) {
       single_instance = new ChaosGameControllerSingleton(controller);
@@ -29,7 +35,7 @@ public class ChaosGameControllerSingleton {
 
   /**
    * Creates an instance of the ChaosGameSingleton class or returns the
-   * existing instance
+   * existing instance.
    */
   public static synchronized ChaosGameControllerSingleton getInstance() {
     if (single_instance == null) {

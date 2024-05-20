@@ -3,8 +3,9 @@ package no.ntnu.idi.stud.singleton;
 import javafx.stage.Stage;
 
 /**
- * Singleton class for managing the Stage of the application
- * Is used by for example the Toast component to render on the stage
+ * Singleton class for managing the Stage of the application.
+ *
+ * <p>Is used by for example the Toast component to render on the stage
  */
 public class StageSingleton {
   // Static variable reference of single_instance
@@ -15,12 +16,17 @@ public class StageSingleton {
   public Stage stage;
 
   /**
-   * Creates the singleton
+   * Creates the singleton.
    */
   private StageSingleton(Stage stage) {
     this.stage = stage;
   }
 
+  /**
+   * Creates the singleton using a stage initial value.
+   *
+   * @param stage The initial stage value
+   */
   public static void createWithStage(Stage stage) {
     if (single_instance == null) {
       single_instance = new StageSingleton(stage);
@@ -29,7 +35,7 @@ public class StageSingleton {
 
   /**
    * Creates an instance of the StageSingleton class or returns the
-   * existing instance
+   * existing instance.
    */
   public static synchronized StageSingleton getInstance() {
     if (single_instance == null) {

@@ -8,18 +8,26 @@ import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import no.ntnu.idi.stud.singleton.ChaosGameControllerSingleton;
 
+/**
+ * A slider view for managing the steps of a transformation.
+ */
 public class StepsSlider extends VBox {
   private final Timeline debounceTimer;
   private final Slider slider;
 
+  /**
+   * Create a new step slider.
+   *
+   * @param debounce Whether to debounce the slider value changes
+   */
   public StepsSlider(boolean debounce) {
-    var controller = ChaosGameControllerSingleton.getInstance().controller;
-    var steps = controller.getStepCount();
 
     slider = new Slider();
     slider.setMin(1);
     slider.setMax(1000000);
-    slider.setValue(steps);
+
+    var controller = ChaosGameControllerSingleton.getInstance().controller;
+    slider.setValue(controller.getStepCount());
 
     debounceTimer = new Timeline();
     debounceTimer.setDelay(Duration.millis(200));

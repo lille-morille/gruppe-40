@@ -13,14 +13,22 @@ import no.ntnu.idi.stud.model.Matrix2x2;
 import no.ntnu.idi.stud.model.Vector2D;
 import no.ntnu.idi.stud.transformation.AffineTransform2D;
 import no.ntnu.idi.stud.transformation.JuliaTransform;
-import no.ntnu.idi.stud.view.sidebar.section.transformations.matrixEditor.MatrixEditor;
-import no.ntnu.idi.stud.view.sidebar.section.transformations.vectorEditor.VectorEditor;
+import no.ntnu.idi.stud.view.sidebar.section.transformations.matrixeditor.MatrixEditor;
+import no.ntnu.idi.stud.view.sidebar.section.transformations.vectoreditor.VectorEditor;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Editor for transformations.
+ */
 public class TransformationsEditor extends VBox implements Observer<ChaosGame> {
   private final ChaosGameController controller;
   private int transformationCount;
 
+  /**
+   * Creates a new editor using the given controller.
+   *
+   * @param controller The controller to handle changes to the transformations.
+   */
   public TransformationsEditor(ChaosGameController controller) {
     this.controller = controller;
   }
@@ -28,7 +36,7 @@ public class TransformationsEditor extends VBox implements Observer<ChaosGame> {
   @Override
   public void onNotified(ChaosGame game) {
 
-    if(game == null) {
+    if (game == null) {
       return;
     }
 
@@ -36,7 +44,7 @@ public class TransformationsEditor extends VBox implements Observer<ChaosGame> {
 
     // only update if the count of transformations change, otherwise, we update for nothing,
     // we can defer updating to lower components that listen to matrices or vectors
-    if(description.getTransforms().size() == transformationCount) {
+    if (description.getTransforms().size() == transformationCount) {
       return;
     }
 

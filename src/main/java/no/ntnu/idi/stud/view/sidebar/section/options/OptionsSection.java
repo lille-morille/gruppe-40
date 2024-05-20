@@ -4,14 +4,13 @@ import javafx.scene.control.TitledPane;
 import javafx.scene.layout.VBox;
 import no.ntnu.idi.stud.controller.ChaosGameController;
 import no.ntnu.idi.stud.dispatch.Observer;
-import no.ntnu.idi.stud.model.ChaosGame;
-import no.ntnu.idi.stud.singleton.ChaosGameControllerSingleton;
 import no.ntnu.idi.stud.view.StyledComponent;
 
 /**
  * Section for displaying and interacting with files.
  */
-public class OptionsSection extends TitledPane implements StyledComponent, Observer<ChaosGameController> {
+public class OptionsSection extends TitledPane
+    implements StyledComponent, Observer<ChaosGameController> {
   /**
    * Construct a new FilesSection.
    */

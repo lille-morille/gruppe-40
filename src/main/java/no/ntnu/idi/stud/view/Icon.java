@@ -4,10 +4,12 @@ import java.util.Objects;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-/// An icon component
+/**
+ * A simple icon class that loads an icon image from the resources directory.
+ */
 public class Icon extends ImageView {
   /**
-   * Creates an icon by name
+   * Creates an icon by name.
    *
    * @param name The name of the file (without extension) in the resources directory
    */

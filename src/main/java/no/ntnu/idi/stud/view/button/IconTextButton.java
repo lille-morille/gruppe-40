@@ -8,12 +8,13 @@ import no.ntnu.idi.stud.view.StyledComponent;
 
 /**
  * A button with both text and an icon.
- * <p>
- * Is used as a primary button in the application.
+ *
+ * <p>Is used as a primary button in the application.
  */
 public class IconTextButton extends HBox implements StyledComponent {
   /**
    * Constructs an IconTextButton with the given text and icon.
+   *
    * @param text The text to display
    * @param icon The icon to display
    * @param onClick The event handler to run when the button is clicked

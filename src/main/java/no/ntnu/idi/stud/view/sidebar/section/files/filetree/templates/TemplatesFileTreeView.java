@@ -11,7 +11,8 @@ import no.ntnu.idi.stud.view.sidebar.section.files.filetree.custom.CustomFileTre
 /**
  * A tree-view showing all available chaos-game templates.
  */
-public class TemplatesFileTreeView extends TreeItem<String> implements Observer<CustomFileTreeModel> {
+public class TemplatesFileTreeView extends TreeItem<String>
+    implements Observer<CustomFileTreeModel> {
   FileTreeController controller;
 
   public static String name = "Templates";

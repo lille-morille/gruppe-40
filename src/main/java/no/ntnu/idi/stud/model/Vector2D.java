@@ -9,11 +9,11 @@ import no.ntnu.idi.stud.serialization.Serializable;
  */
 public class Vector2D extends Observable<Vector2D> implements Serializable {
   /**
-   * The first part of the vector
+   * The first part of the vector.
    */
   private double x0;
   /**
-   * The second part of the vector
+   * The second part of the vector.
    */
   private double x1;
 
@@ -28,6 +28,12 @@ public class Vector2D extends Observable<Vector2D> implements Serializable {
     this.x1 = x1;
   }
 
+  /**
+   * Construct a vector from a serialized string.
+   *
+   * @param str The string to use
+   * @return The vector from the string
+   */
   public static Vector2D fromString(String str) {
     String[] parts = str.split(",");
     return new Vector2D(Double.parseDouble(parts[0]), Double.parseDouble(parts[1]));
@@ -44,7 +50,7 @@ public class Vector2D extends Observable<Vector2D> implements Serializable {
   }
 
   /**
-   * Get the x part of the vector
+   * Get the x part of the vector.
    *
    * @return The x part of the vector
    */
@@ -53,7 +59,7 @@ public class Vector2D extends Observable<Vector2D> implements Serializable {
   }
 
   /**
-   * Get the y part of the vector
+   * Get the y part of the vector.
    *
    * @return The y part of the vector
    */
@@ -62,7 +68,7 @@ public class Vector2D extends Observable<Vector2D> implements Serializable {
   }
 
   /**
-   * Add two vectors together
+   * Add two vectors together.
    *
    * @param other The other vector to add
    * @return A new vector that is the sum of the two vectors
@@ -72,7 +78,7 @@ public class Vector2D extends Observable<Vector2D> implements Serializable {
   }
 
   /**
-   * Subtract two vectors
+   * Subtract two vectors.
    *
    * @param other The other vector to subtract
    * @return A new vector that is the difference of the two vectors
@@ -83,10 +89,12 @@ public class Vector2D extends Observable<Vector2D> implements Serializable {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o)
+    if (this == o) {
       return true;
-    if (o == null || getClass() != o.getClass())
+    }
+    if (o == null || getClass() != o.getClass()) {
       return false;
+    }
     Vector2D vector2D = (Vector2D) o;
     return Double.compare(x0, vector2D.x0) == 0 && Double.compare(x1, vector2D.x1) == 0;
   }

@@ -7,7 +7,6 @@ import javafx.scene.control.TreeView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import no.ntnu.idi.stud.model.ChaosGameDescription;
 import no.ntnu.idi.stud.view.StyledComponent;
 import no.ntnu.idi.stud.view.button.IconTextButton;
 import no.ntnu.idi.stud.view.sidebar.section.files.filetree.FileTreeController;
@@ -41,7 +40,6 @@ public class FilesSection extends TitledPane implements StyledComponent {
       }
     });
 
-    TreeItem<String> rootItem = new TreeItem<>();
 
     fileTreeController = new FileTreeController();
 
@@ -51,6 +49,7 @@ public class FilesSection extends TitledPane implements StyledComponent {
     fileTreeController.getModel().addObserver(customView);
     fileTreeController.init();
 
+    TreeItem<String> rootItem = new TreeItem<>();
     rootItem.getChildren().addAll(templatesView, customView);
     treeView.setRoot(rootItem);
     content.getChildren().add(treeView);
@@ -80,16 +79,17 @@ public class FilesSection extends TitledPane implements StyledComponent {
 
   private void addHeightListener(TreeItem<String> item) {
     item.expandedProperty().addListener((observable, oldValue, newValue) -> updateTreeViewHeight());
-    item.getChildren().addListener((javafx.collections.ListChangeListener.Change<? extends TreeItem<String>> c) -> {
-      while (c.next()) {
-        if (c.wasAdded()) {
-          for (TreeItem<String> addedItem : c.getAddedSubList()) {
-            addHeightListener(addedItem);
+    item.getChildren().addListener(
+        (javafx.collections.ListChangeListener.Change<? extends TreeItem<String>> c) -> {
+          while (c.next()) {
+            if (c.wasAdded()) {
+              for (TreeItem<String> addedItem : c.getAddedSubList()) {
+                addHeightListener(addedItem);
+              }
+            }
           }
-        }
-      }
-      updateTreeViewHeight();
-    });
+          updateTreeViewHeight();
+        });
   }
 
   private void updateTreeViewHeight() {

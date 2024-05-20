@@ -5,7 +5,13 @@ import javafx.scene.layout.VBox;
 import no.ntnu.idi.stud.singleton.ChaosGameControllerSingleton;
 import no.ntnu.idi.stud.view.button.IconButton;
 
+/**
+ * Zoom controls for the chaos game canvas.
+ */
 public class ChaosGameViewerZoomControls extends VBox implements StyledComponent {
+  /**
+   * Creates the zoom controls.
+   */
   public ChaosGameViewerZoomControls() {
     super(5);
     getStyleClass().add("zoom-controls");

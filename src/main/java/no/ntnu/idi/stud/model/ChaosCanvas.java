@@ -14,10 +14,10 @@ public class ChaosCanvas {
   /**
    * Instantiates a new Chaos canvas.
    *
-   * @param width                    the width
-   * @param height                   the height
-   * @param minCoords                the min coords
-   * @param maxCoords                the max coords
+   * @param width     the width
+   * @param height    the height
+   * @param minCoords the min coords
+   * @param maxCoords the max coords
    */
   public ChaosCanvas(int width, int height, Vector2D minCoords, Vector2D maxCoords) {
     this.width = width;
@@ -26,23 +26,18 @@ public class ChaosCanvas {
     this.canvas = new int[width][height];
 
     //The canvas is a 2D array of integers. Each element in the array represents a pixel in the
-    double deltaXCoords = maxCoords.getX0() - minCoords.getX0();
-    double deltaYCoords = maxCoords.getX1() - minCoords.getX1();
-    double deltaXIndices = width - 1;
-    double deltaYIndices = height - 1;
+    double dxCoords = maxCoords.getX0() - minCoords.getX0();
+    double dyCoords = maxCoords.getX1() - minCoords.getX1();
+    double dxIndices = width - 1;
+    double dyIndices = height - 1;
 
 
     //The transformation matrix that scales the coordinates to the indices of the canvas.
-    Matrix2x2 scaleMatrix = new Matrix2x2(
-        deltaXIndices / deltaXCoords,
-        0,
-        0,
-        deltaYIndices / deltaYCoords);
+    Matrix2x2 scaleMatrix = new Matrix2x2(dxIndices / dxCoords, 0, 0, dyIndices / dyCoords);
 
     //The transformation vector that offsets the coordinates to the indices of the canvas.
-    Vector2D offsetVector = new Vector2D(
-        -minCoords.getX0() * deltaXIndices / deltaXCoords,
-        -minCoords.getX1() * deltaYIndices / deltaYCoords);
+    Vector2D offsetVector = new Vector2D(-minCoords.getX0() * dxIndices / dxCoords,
+        -minCoords.getX1() * dyIndices / dyCoords);
 
     //The transformation that transforms coordinates to indices.
     this.transformCoordsToIndices = new AffineTransform2D(scaleMatrix, offsetVector);
@@ -50,6 +45,7 @@ public class ChaosCanvas {
 
   /**
    * Gets width.
+   *
    * @return width
    */
   public int getWidth() {
@@ -58,6 +54,7 @@ public class ChaosCanvas {
 
   /**
    * Gets height.
+   *
    * @return height
    */
   public int getHeight() {
@@ -70,8 +67,8 @@ public class ChaosCanvas {
    * @param point the point
    * @return the int
    */
-  public int getPixel (Vector2D point){
-    return canvas [(int) point.getX0()][(int) point.getX1()];
+  public int getPixel(Vector2D point) {
+    return canvas[(int) point.getX0()][(int) point.getX1()];
   }
 
   /**
@@ -79,9 +76,9 @@ public class ChaosCanvas {
    *
    * @param point the point
    */
-  public void putPixel (Vector2D point){
+  public void putPixel(Vector2D point) {
     Vector2D newVector = transformCoordsToIndices.transform(point);
-    canvas [(int) newVector.getX0()][(int) newVector.getX1()] = 1;
+    canvas[(int) newVector.getX0()][(int) newVector.getX1()] = 1;
   }
 
   /**

@@ -1,6 +1,5 @@
 package no.ntnu.idi.stud.view.sidebar;
 
-import javafx.scene.control.Accordion;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import no.ntnu.idi.stud.singleton.ChaosGameControllerSingleton;
@@ -8,7 +7,13 @@ import no.ntnu.idi.stud.view.sidebar.section.files.FilesSection;
 import no.ntnu.idi.stud.view.sidebar.section.options.OptionsSection;
 import no.ntnu.idi.stud.view.sidebar.section.transformations.TransformationsSection;
 
+/**
+ * The sidebar view for the application.
+ */
 public class ChaosGameSidebar extends ScrollPane {
+  /**
+   * Creates a sidebar.
+   */
   public ChaosGameSidebar() {
     this.setPrefWidth(250);    // Set the width of the this
 

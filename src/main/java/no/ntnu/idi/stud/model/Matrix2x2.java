@@ -8,24 +8,24 @@ import no.ntnu.idi.stud.serialization.Serializable;
  */
 public class Matrix2x2 extends Observable<Matrix2x2> implements Serializable {
   /**
-   * The first row and first column of the matrix
+   * The first row and first column of the matrix.
    */
   private double a00;
   /**
-   * The first row and second column of the matrix
+   * The first row and second column of the matrix.
    */
   private double a01;
   /**
-   * The second row and first column of the matrix
+   * The second row and first column of the matrix.
    */
   private double a10;
   /**
-   * The second row and second column of the matrix
+   * The second row and second column of the matrix.
    */
   private double a11;
 
   /**
-   * Gets the value a00 of the matrix
+   * Gets the value a00 of the matrix.
    *
    * @return a00
    */
@@ -34,7 +34,7 @@ public class Matrix2x2 extends Observable<Matrix2x2> implements Serializable {
   }
 
   /**
-   * Gets the value a00 of the matrix
+   * Gets the value a00 of the matrix.
    *
    * @return a01
    */
@@ -43,7 +43,7 @@ public class Matrix2x2 extends Observable<Matrix2x2> implements Serializable {
   }
 
   /**
-   * Gets the value a00 of the matrix
+   * Gets the value a00 of the matrix.
    *
    * @return a10
    */
@@ -52,7 +52,7 @@ public class Matrix2x2 extends Observable<Matrix2x2> implements Serializable {
   }
 
   /**
-   * Gets the value a00 of the matrix
+   * Gets the value a00 of the matrix.
    *
    * @return a11
    */
@@ -60,21 +60,41 @@ public class Matrix2x2 extends Observable<Matrix2x2> implements Serializable {
     return a11;
   }
 
+  /**
+   * Sets the value a00 of the matrix.
+   *
+   * @param a00 The new value of a00
+   */
   public void setA00(double a00) {
     this.a00 = a00;
     notifyObservers(this);
   }
 
+  /**
+   * Sets the value a01 of the matrix.
+   *
+   * @param a01 The new value of a01
+   */
   public void setA01(double a01) {
     this.a01 = a01;
     notifyObservers(this);
   }
 
+  /**
+   * Sets the value a10 of the matrix.
+   *
+   * @param a10 The new value of a10
+   */
   public void setA10(double a10) {
     this.a10 = a10;
     notifyObservers(this);
   }
 
+  /**
+   * Sets the value a11 of the matrix.
+   *
+   * @param a11 The new value of a11
+   */
   public void setA11(double a11) {
     this.a11 = a11;
     notifyObservers(this);
@@ -95,6 +115,12 @@ public class Matrix2x2 extends Observable<Matrix2x2> implements Serializable {
     this.a11 = a11;
   }
 
+  /**
+   * Create a new 2x2 matrix deserialized from a string.
+   *
+   * @param s The string to deserialize
+   * @return The deserialized matrix
+   */
   public static Matrix2x2 fromString(String s) {
     String[] parts = s.split(",");
     return new Matrix2x2(Double.parseDouble(parts[0]), Double.parseDouble(parts[1]),
@@ -103,7 +129,7 @@ public class Matrix2x2 extends Observable<Matrix2x2> implements Serializable {
 
 
   /**
-   * Get the first row and first column of the matrix
+   * Get the first row and first column of the matrix.
    *
    * @return The first row and first column of the matrix
    */

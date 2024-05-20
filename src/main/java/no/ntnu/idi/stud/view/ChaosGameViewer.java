@@ -5,11 +5,17 @@ import no.ntnu.idi.stud.controller.ChaosGameController;
 import no.ntnu.idi.stud.dispatch.Observer;
 import no.ntnu.idi.stud.singleton.ChaosGameControllerSingleton;
 
+/**
+ * A GUI view for the chaos game application.
+ */
 public class ChaosGameViewer extends StackPane implements Observer<ChaosGameController> {
   static int canvasWidth = 500;
   static int canvasHeight = 500;
   ChaosGameCanvas canvas;
 
+  /**
+   * Creates the main view for the application.
+   */
   public ChaosGameViewer() {
     var controller = ChaosGameControllerSingleton.getInstance().controller;
     canvas = new ChaosGameCanvas(canvasWidth, canvasHeight);

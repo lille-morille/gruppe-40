@@ -9,12 +9,18 @@ import no.ntnu.idi.stud.model.ChaosGame;
 import no.ntnu.idi.stud.model.Vector2D;
 import no.ntnu.idi.stud.singleton.ChaosGameControllerSingleton;
 import no.ntnu.idi.stud.view.StyledComponent;
-import no.ntnu.idi.stud.view.sidebar.section.transformations.vectorEditor.VectorEditor;
+import no.ntnu.idi.stud.view.sidebar.section.transformations.vectoreditor.VectorEditor;
 
+/**
+ * A class representing a min/max coordinate editor.
+ */
 public class MinMaxCoordsEditor extends VBox implements StyledComponent, Observer<ChaosGame> {
   final VectorEditor minCoordsField;
   final VectorEditor maxCoordsField;
 
+  /**
+   * Construct a min/max coordinate editor.
+   */
   public MinMaxCoordsEditor() {
     super(5);
     var controller = ChaosGameControllerSingleton.getInstance().controller;

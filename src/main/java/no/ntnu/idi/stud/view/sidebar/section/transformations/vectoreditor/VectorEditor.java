@@ -1,23 +1,29 @@
-package no.ntnu.idi.stud.view.sidebar.section.transformations.vectorEditor;
+package no.ntnu.idi.stud.view.sidebar.section.transformations.vectoreditor;
 
 import javafx.beans.value.ChangeListener;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import no.ntnu.idi.stud.controller.ChaosGameController;
 import no.ntnu.idi.stud.dispatch.Observer;
 import no.ntnu.idi.stud.dispatch.VectorHandler;
 import no.ntnu.idi.stud.model.Vector2D;
-import no.ntnu.idi.stud.transformation.AffineTransform2D;
-import no.ntnu.idi.stud.transformation.JuliaTransform;
 
+/**
+ * An editor view for editing a single vector.
+ */
 public class VectorEditor extends VBox implements Observer<Vector2D> {
   private TextField fieldx0;
   private TextField fieldx1;
   private ChangeListener<String> eventHandler;
-  private VectorHandler handler;
-  private Vector2D vector;
+  private final VectorHandler handler;
+  private final Vector2D vector;
 
+  /**
+   * Constructs a vector editor.
+   *
+   * @param handler The handler class to handle changes to the vector
+   * @param vector The initial value for the vector before it is updated by the observable
+   */
   public VectorEditor(VectorHandler handler, Vector2D vector) {
     super(5);
     this.handler = handler;
@@ -27,8 +33,8 @@ public class VectorEditor extends VBox implements Observer<Vector2D> {
 
   @Override
   public void onNotified(Vector2D resource) {
-    if(resource.getX0() == Double.parseDouble(fieldx0.getText()) &&
-        resource.getX1() == Double.parseDouble(fieldx1.getText())) {
+    if (resource.getX0() == Double.parseDouble(fieldx0.getText())
+        && resource.getX1() == Double.parseDouble(fieldx1.getText())) {
       return;
     }
 
@@ -58,8 +64,8 @@ public class VectorEditor extends VBox implements Observer<Vector2D> {
         return;
       }
 
-      if(!Double.toString(x0).equals(fieldx0.getText()) ||
-          !Double.toString(x1).equals(fieldx1.getText())) {
+      if (!Double.toString(x0).equals(fieldx0.getText())
+          || !Double.toString(x1).equals(fieldx1.getText())) {
         return;
       }
 

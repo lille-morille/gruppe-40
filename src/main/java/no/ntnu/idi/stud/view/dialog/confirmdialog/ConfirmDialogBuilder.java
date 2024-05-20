@@ -1,4 +1,4 @@
-package no.ntnu.idi.stud.view.dialog.confirmDialog;
+package no.ntnu.idi.stud.view.dialog.confirmdialog;
 
 /**
  * A builder-style constructor for the ConfirmDialog.

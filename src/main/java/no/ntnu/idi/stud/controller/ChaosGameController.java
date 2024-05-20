@@ -13,25 +13,50 @@ import no.ntnu.idi.stud.transformation.AffineTransform2D;
 import no.ntnu.idi.stud.transformation.JuliaTransform;
 import no.ntnu.idi.stud.view.Toast;
 
-public class ChaosGameController extends Observable<ChaosGameController> implements ChaosGameEventHandler {
+/**
+ * Controls a chaos game application.
+ */
+public class ChaosGameController extends Observable<ChaosGameController>
+    implements ChaosGameEventHandler {
   private final ChaosGameFileHandler fileHandler;
   private final SavedGames savedGames;
   private ChaosGame game;
   private int stepCount;
 
+  /**
+   * Get the current step count.
+   *
+   * @return the current step count
+   */
   public int getStepCount() {
     return stepCount;
   }
 
+  /**
+   * Get the current chaos game.
+   *
+   * @return the current chaos game
+   */
   public ChaosGame getGame() {
     return game;
   }
 
+  /**
+   * Create a new chaos game and notify observers.
+   */
   public void createGame() {
     this.game = new ChaosGame();
     notifyObservers(this);
   }
 
+  /**
+   * Create a new chaos game using the given description
+   *
+   * <p>Creates a canvas with width and height 500 and runs the step count automatically
+   * on that canvas.
+   *
+   * @param description The description to draw from
+   */
   public void createGame(ChaosGameDescription description) {
     this.game = new ChaosGame(description, 500, 500);
     notifyObservers(this);
@@ -39,6 +64,13 @@ public class ChaosGameController extends Observable<ChaosGameController> impleme
     game.runSteps(stepCount);
   }
 
+  /**
+   * Create a new chaos game using the given description, width and height.
+   *
+   * @param description The description to draw from
+   * @param width The width of the canvas
+   * @param height The height of the canvas
+   */
   public void createGame(ChaosGameDescription description, int width, int height) {
     this.game = new ChaosGame(description, width, height);
     notifyObservers(this);
@@ -46,12 +78,20 @@ public class ChaosGameController extends Observable<ChaosGameController> impleme
     game.runSteps(stepCount);
   }
 
+  /**
+   * Create a new chaos game controller.
+   */
   public ChaosGameController() {
     this.game = new ChaosGame();
     this.fileHandler = new ChaosGameFileHandler();
     this.savedGames = new SavedGames();
   }
 
+  /**
+   * Initializes the controller.
+   *
+   * <p>Should be called after all observers are subscribed to changes.
+   */
   public void initialize() {
     savedGames.setSavedGames(fileHandler.getSavedGames());
   }
@@ -91,7 +131,7 @@ public class ChaosGameController extends Observable<ChaosGameController> impleme
       fileHandler.writeToFile(game.getDescription(), name);
       savedGames.addSavedGame(name);
     } catch (IOException e) {
-        new Toast("Failed to save game", Toast.Variant.ERROR).show();
+      new Toast("Failed to save game", Toast.Variant.ERROR).show();
     }
   }
 

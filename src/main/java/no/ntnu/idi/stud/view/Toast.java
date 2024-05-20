@@ -12,17 +12,27 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import no.ntnu.idi.stud.singleton.StageSingleton;
+import org.junit.jupiter.params.aggregator.ArgumentAccessException;
 
 /**
  * A class for creating toast messages.
  */
 public class Toast extends StackPane implements StyledComponent {
+  /**
+   * Creates a toast.
+   *
+   * @param message The message to show
+   * @param variant The toast variant to use (success, error, info)
+   */
   public Toast(String message, Variant variant) {
     addStylesheet("toast");
     this.message = message;
     this.variant = variant;
   }
 
+  /**
+   * A toast variant. Affects the styling of the toast.
+   */
   public enum Variant {
     SUCCESS, ERROR, INFO
   }
@@ -30,6 +40,9 @@ public class Toast extends StackPane implements StyledComponent {
   final String message;
   final Variant variant;
 
+  /**
+   * Shows the toast to the user.
+   */
   public void show() {
     Stage toastStage = new Stage();
     toastStage.initOwner(StageSingleton.getInstance().stage);
@@ -54,6 +67,8 @@ public class Toast extends StackPane implements StyledComponent {
       case INFO:
         getStyleClass().add("info");
         break;
+      default:
+        throw new IllegalArgumentException("Invalid variant: " + variant);
     }
 
 
@@ -63,10 +78,10 @@ public class Toast extends StackPane implements StyledComponent {
 
     // Position the toast in the bottom right corner of the parent window
     Stage ownerStage = StageSingleton.getInstance().stage;
-    double xOffset = ownerStage.getX() + ownerStage.getWidth() - 150; // Adjust width if needed
-    double yOffset = ownerStage.getY() + ownerStage.getHeight() - 80; // Adjust height if needed
-    toastStage.setX(xOffset);
-    toastStage.setY(yOffset);
+    double dxOffset = ownerStage.getX() + ownerStage.getWidth() - 150; // Adjust width if needed
+    double dyOffset = ownerStage.getY() + ownerStage.getHeight() - 80; // Adjust height if needed
+    toastStage.setX(dxOffset);
+    toastStage.setY(dyOffset);
     toastStage.show();
 
     Timeline fadeInTimeline = new Timeline();

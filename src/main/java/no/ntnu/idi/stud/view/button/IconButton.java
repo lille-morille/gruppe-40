@@ -7,8 +7,8 @@ import no.ntnu.idi.stud.view.StyledComponent;
 
 /**
  * A button with an icon.
- * <p>
- * Is used as a secondary button in the application.
+ *
+ * <p>Is used as a secondary button in the application.
  */
 public class IconButton extends HBox implements StyledComponent {
   /**

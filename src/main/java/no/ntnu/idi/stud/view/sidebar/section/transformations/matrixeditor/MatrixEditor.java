@@ -1,4 +1,4 @@
-package no.ntnu.idi.stud.view.sidebar.section.transformations.matrixEditor;
+package no.ntnu.idi.stud.view.sidebar.section.transformations.matrixeditor;
 
 import javafx.beans.value.ChangeListener;
 import javafx.scene.control.Label;
@@ -10,6 +10,9 @@ import no.ntnu.idi.stud.dispatch.Observer;
 import no.ntnu.idi.stud.model.Matrix2x2;
 import no.ntnu.idi.stud.view.StyledComponent;
 
+/**
+ * A matrix editor component for editing a single matrix.
+ */
 public class MatrixEditor extends VBox implements Observer<Matrix2x2>, StyledComponent {
   private TextField fielda00;
   private TextField fielda01;
@@ -19,6 +22,12 @@ public class MatrixEditor extends VBox implements Observer<Matrix2x2>, StyledCom
   private final MatrixHandler handler;
   private final Matrix2x2 matrix;
 
+  /**
+   * Creates a new matrix editor using the given handler and matrix.
+   *
+   * @param handler The handler class that handles changes to the matrix
+   * @param matrix  The matrix itself to display as an initial value before any observers run
+   */
   public MatrixEditor(MatrixHandler handler, Matrix2x2 matrix) {
     super(5);
     this.handler = handler;
@@ -29,10 +38,10 @@ public class MatrixEditor extends VBox implements Observer<Matrix2x2>, StyledCom
   @Override
   public void onNotified(Matrix2x2 resource) {
     // Only update if the fields change
-    if(Double.parseDouble(fielda00.getText()) == resource.getA00() &&
-        Double.parseDouble(fielda01.getText()) == resource.getA01() &&
-        Double.parseDouble(fielda10.getText()) == resource.getA10() &&
-        Double.parseDouble(fielda11.getText()) == resource.getA11()) {
+    if (Double.parseDouble(fielda00.getText()) == resource.getA00()
+        && Double.parseDouble(fielda01.getText()) == resource.getA01()
+        && Double.parseDouble(fielda10.getText()) == resource.getA10()
+        && Double.parseDouble(fielda11.getText()) == resource.getA11()) {
       return;
     }
 
@@ -74,10 +83,10 @@ public class MatrixEditor extends VBox implements Observer<Matrix2x2>, StyledCom
         return;
       }
 
-      if(!Double.toString(a00).equals(fielda00.getText()) ||
-          !Double.toString(a01).equals(fielda01.getText()) ||
-          !Double.toString(a10).equals(fielda10.getText()) ||
-          !Double.toString(a11).equals(fielda11.getText())) {
+      if (!Double.toString(a00).equals(fielda00.getText())
+          || !Double.toString(a01).equals(fielda01.getText())
+          || !Double.toString(a10).equals(fielda10.getText())
+          || !Double.toString(a11).equals(fielda11.getText())) {
         return;
       }
 

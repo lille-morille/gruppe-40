@@ -6,14 +6,14 @@ import no.ntnu.idi.stud.model.ChaosGameDescription;
 import no.ntnu.idi.stud.serialization.ChaosGameFileHandler;
 import no.ntnu.idi.stud.singleton.ChaosGameControllerSingleton;
 import no.ntnu.idi.stud.view.Toast;
-import no.ntnu.idi.stud.view.dialog.confirmDialog.ConfirmDialogBuilder;
-import no.ntnu.idi.stud.view.dialog.textInputDialog.TextInputDialogBuilder;
+import no.ntnu.idi.stud.view.dialog.confirmdialog.ConfirmDialogBuilder;
+import no.ntnu.idi.stud.view.dialog.textinputdialog.TextInputDialogBuilder;
 import no.ntnu.idi.stud.view.sidebar.section.files.filetree.custom.CustomFileTreeModel;
 import no.ntnu.idi.stud.view.sidebar.section.files.filetree.custom.CustomFileTreeView;
 import no.ntnu.idi.stud.view.sidebar.section.files.filetree.templates.TemplatesFileTreeView;
 
 /**
- * Controller for the custom file tree
+ * Controller for the custom file tree.
  */
 public class FileTreeController {
   private final CustomFileTreeModel model;
@@ -47,7 +47,7 @@ public class FileTreeController {
   }
 
   /**
-   * On click create description
+   * On click create description.
    */
   public void onCreateDescription() {
     new TextInputDialogBuilder().setPrompt("Please enter the name of the new chaos game")
@@ -56,7 +56,7 @@ public class FileTreeController {
   }
 
   /**
-   * Handle the creation of a new description
+   * Handle the creation of a new description.
    *
    * @param value The name of the new description
    */
@@ -65,6 +65,11 @@ public class FileTreeController {
   }
 
 
+  /**
+   * Handles the deletion of a description using a name.
+   *
+   * @param name The name of the description to delete.
+   */
   public void onDeleteDescription(String name) {
     new ConfirmDialogBuilder().setOnConfirm(() -> handleDeleteDescription(name))
         .setPrompt("Are you sure you want to delete this chaos game?")
@@ -72,7 +77,7 @@ public class FileTreeController {
   }
 
   /**
-   * On click delete description
+   * On click delete description.
    *
    * @param name The name of the description to delete
    */
@@ -82,10 +87,9 @@ public class FileTreeController {
   }
 
   /**
-   * On click save description
+   * On click save description.
    *
-   * @param description The description to save
-   * @param name        The name of the description
+   * <p>Applies to the current description.
    */
   public void onSaveDescription() {
     var description =
@@ -102,20 +106,20 @@ public class FileTreeController {
   }
 
   /**
-   * On click select game
+   * On click select game.
    *
    * @param name The name of the game to select
    */
   public void onSelectGame(String name) {
     // Avoid selecting categories or other
     var gameType = getGameType(name);
-    if(gameType == GameType.INVALID) {
+    if (gameType == GameType.INVALID) {
       return;
     }
 
     model.setSelectedDescription(name);
     ChaosGameDescription description;
-    if(gameType == GameType.TEMPLATES) {
+    if (gameType == GameType.TEMPLATES) {
       description = ChaosGameFactory.getTransformations().get(name);
     } else {
       description = getDescriptionFromFile(name);
@@ -151,8 +155,8 @@ public class FileTreeController {
   }
 
   private GameType getGameType(String name) {
-    if (name == null || name.equals(CustomFileTreeView.name) ||
-        name.equals(TemplatesFileTreeView.name)) {
+    if (name == null || name.equals(CustomFileTreeView.name)
+        || name.equals(TemplatesFileTreeView.name)) {
       return GameType.INVALID;
     }
 
@@ -164,7 +168,7 @@ public class FileTreeController {
   }
 
   /**
-   * Whether a game is selected in the file tree
+   * Whether a game is selected in the file tree.
    *
    * @param name The name of the game
    * @return Whether the game is selected
