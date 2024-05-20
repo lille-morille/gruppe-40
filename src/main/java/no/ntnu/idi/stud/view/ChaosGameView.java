@@ -12,18 +12,15 @@ public class ChaosGameView extends Application {
 
   @Override
   public void start(Stage stage) {
-    var canvasWidth = 500;
-    var canvasHeight = 500;
-
     StageSingleton.createWithStage(stage);
     ChaosGameController controller = new ChaosGameController();
     ChaosGameControllerSingleton.createWithController(controller);
 
     var root = new BorderPane();
 
-    var canvas = new ChaosGameCanvas(canvasWidth, canvasHeight);
-    controller.getGame().addObserver(canvas);
-    root.setCenter(canvas);
+    var viewer = new ChaosGameViewer();
+    controller.addObserver(viewer);
+    root.setCenter(viewer);
 
     var sidebar = new ChaosGameSidebar();
     root.setLeft(sidebar);

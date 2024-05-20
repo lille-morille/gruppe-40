@@ -1,33 +1,39 @@
 package no.ntnu.idi.stud.view.sidebar.section.options;
 
 import javafx.scene.control.TitledPane;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
 import javafx.scene.layout.VBox;
+import no.ntnu.idi.stud.controller.ChaosGameController;
+import no.ntnu.idi.stud.dispatch.Observer;
+import no.ntnu.idi.stud.model.ChaosGame;
+import no.ntnu.idi.stud.singleton.ChaosGameControllerSingleton;
 import no.ntnu.idi.stud.view.StyledComponent;
 
 /**
  * Section for displaying and interacting with files.
  */
-public class OptionsSection extends TitledPane implements StyledComponent {
-
+public class OptionsSection extends TitledPane implements StyledComponent, Observer<ChaosGameController> {
   /**
    * Construct a new FilesSection.
    */
   public OptionsSection() {
     addStylesheet("sidebar/section/section");
     this.setText("Options");
+  }
 
+  @Override
+  public void onNotified(ChaosGameController resource) {
     VBox content = new VBox();
 
-    // Trees
-    TreeView<String> treeView = new TreeView<>();
-    treeView.showRootProperty().set(false);
+    if (resource.getGame().getDescription() == null) {
+      return;
+    }
 
-    TreeItem<String> rootItem = new TreeItem<>();
+    System.out.println("Rendering options");
 
-    treeView.setRoot(rootItem);
-    content.getChildren().add(treeView);
+    var stepsSlider = new StepsSlider(false);
+    var minMaxCoordsEditor = new MinMaxCoordsEditor();
+
+    content.getChildren().addAll(stepsSlider, minMaxCoordsEditor);
 
     this.setContent(content);
   }

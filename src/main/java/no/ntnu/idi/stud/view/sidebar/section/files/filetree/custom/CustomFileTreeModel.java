@@ -1,4 +1,4 @@
-package no.ntnu.idi.stud.view.sidebar.filetree.custom;
+package no.ntnu.idi.stud.view.sidebar.section.files.filetree.custom;
 
 import java.util.List;
 import no.ntnu.idi.stud.dispatch.Observable;

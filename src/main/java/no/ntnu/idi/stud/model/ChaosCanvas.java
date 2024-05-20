@@ -9,8 +9,6 @@ public class ChaosCanvas {
   private final int[][] canvas;
   private final int width;
   private final int height;
-  private final Vector2D minCoords;
-  private final Vector2D maxCoords;
   private final AffineTransform2D transformCoordsToIndices;
 
   /**
@@ -24,8 +22,6 @@ public class ChaosCanvas {
   public ChaosCanvas(int width, int height, Vector2D minCoords, Vector2D maxCoords) {
     this.width = width;
     this.height = height;
-    this.minCoords = minCoords;
-    this.maxCoords = maxCoords;
 
     this.canvas = new int[width][height];
 

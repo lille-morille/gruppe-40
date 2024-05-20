@@ -1,11 +1,11 @@
-package no.ntnu.idi.stud.view.sidebar.filetree.custom;
+package no.ntnu.idi.stud.view.sidebar.section.files.filetree.custom;
 
 import javafx.scene.control.TreeItem;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import no.ntnu.idi.stud.view.Icon;
 import no.ntnu.idi.stud.view.button.IconButton;
-import no.ntnu.idi.stud.view.sidebar.filetree.FileTreeController;
+import no.ntnu.idi.stud.view.sidebar.section.files.filetree.FileTreeController;
 
 public class CustomFileTreeItem extends TreeItem<String> {
   private final FileTreeController controller;

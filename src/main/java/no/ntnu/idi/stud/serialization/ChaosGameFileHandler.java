@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.StringReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -34,7 +35,6 @@ public class ChaosGameFileHandler {
 
       while (true) {
         String transformation = reader.readLine();
-        System.out.println(transformation);
         if (transformation == null) {
           break;
         }
@@ -46,7 +46,6 @@ public class ChaosGameFileHandler {
 
           transformations.add(new JuliaTransform(point));
         } else {
-          System.out.println(Arrays.toString(parts));
           var matrix = Matrix2x2.fromString(parts[0]);
           var vector = Vector2D.fromString(parts[1]);
 
@@ -55,16 +54,7 @@ public class ChaosGameFileHandler {
 
       }
 
-      ChaosGameDescription description =
-          new ChaosGameDescription(minCoords, maxCoords, transformations);
-
-      System.out.println(description);
-
-      return description;
-
-    } catch (IOException e) {
-      e.printStackTrace();
-      return null;
+      return new ChaosGameDescription(minCoords, maxCoords, transformations);
     }
   }
 

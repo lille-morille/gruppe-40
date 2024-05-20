@@ -7,22 +7,17 @@ import no.ntnu.idi.stud.model.ChaosGame;
 import no.ntnu.idi.stud.model.Vector2D;
 import no.ntnu.idi.stud.dispatch.Observer;
 
-public class ChaosGameCanvas extends Canvas implements Observer<ChaosGame>  {
-  final double width;
-  final double height;
-
+public class ChaosGameCanvas extends Canvas implements Observer<ChaosGame> {
   public ChaosGameCanvas(double v, double v1) {
     super(v, v1);
-    this.width = v;
-    this.height = v1;
   }
 
-  private void drawPixels(ChaosCanvas canvas) {
+  public void drawPixels(ChaosCanvas canvas) {
     // Get context for drawing on the canvas
     GraphicsContext gc = this.getGraphicsContext2D();
 
     // Clear before redraw to override
-    gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+    gc.clearRect(0, 0, getWidth(), getHeight());
     gc.setFill(javafx.scene.paint.Color.BLACK);
 
     // Paint each pixel in black

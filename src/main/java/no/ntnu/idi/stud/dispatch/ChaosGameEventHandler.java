@@ -30,4 +30,12 @@ public interface ChaosGameEventHandler {
   void handleSetVector(int transformationIndex, Vector2D vector2D);
 
   void handleSaveMinMaxCoords(Vector2D minCoords, Vector2D maxCoords);
+
+  void handleSetMinCoords(Vector2D vector);
+
+  void handleSetMaxCoords(Vector2D vector);
+
+  void zoomOut();
+
+  void zoomIn();
 }

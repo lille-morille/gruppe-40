@@ -1,9 +1,9 @@
-package no.ntnu.idi.stud.view.sidebar.filetree.custom;
+package no.ntnu.idi.stud.view.sidebar.section.files.filetree.custom;
 
 import javafx.scene.control.TreeItem;
 import no.ntnu.idi.stud.dispatch.Observer;
 import no.ntnu.idi.stud.view.Icon;
-import no.ntnu.idi.stud.view.sidebar.filetree.FileTreeController;
+import no.ntnu.idi.stud.view.sidebar.section.files.filetree.FileTreeController;
 
 /**
  * A tree-view showing all available chaos-game templates.

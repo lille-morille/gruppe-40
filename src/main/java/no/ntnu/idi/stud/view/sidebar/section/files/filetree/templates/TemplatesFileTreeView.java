@@ -1,11 +1,12 @@
-package no.ntnu.idi.stud.view.sidebar.filetree.templates;
+package no.ntnu.idi.stud.view.sidebar.section.files.filetree.templates;
 
 import javafx.scene.control.TreeItem;
+import no.ntnu.idi.stud.controller.ChaosGameFactory;
 import no.ntnu.idi.stud.dispatch.Observer;
 import no.ntnu.idi.stud.view.Icon;
-import no.ntnu.idi.stud.view.sidebar.filetree.FileTreeController;
-import no.ntnu.idi.stud.view.sidebar.filetree.custom.CustomFileTreeItem;
-import no.ntnu.idi.stud.view.sidebar.filetree.custom.CustomFileTreeModel;
+import no.ntnu.idi.stud.view.sidebar.section.files.filetree.FileTreeController;
+import no.ntnu.idi.stud.view.sidebar.section.files.filetree.custom.CustomFileTreeItem;
+import no.ntnu.idi.stud.view.sidebar.section.files.filetree.custom.CustomFileTreeModel;
 
 /**
  * A tree-view showing all available chaos-game templates.
@@ -23,12 +24,11 @@ public class TemplatesFileTreeView extends TreeItem<String> implements Observer<
     this.controller = controller;
   }
 
-  static String[] templates =
-      new String[] {"Sierpinski-triangle", "Julia-transformation", "Barnsley-transformation"};
-
   @Override
   public void onNotified(CustomFileTreeModel resource) {
     this.getChildren().clear();
+
+    var templates = ChaosGameFactory.getTransformations().keySet().stream().toList();
 
     for (String template : templates) {
       TreeItem<String> item =

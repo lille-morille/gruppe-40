@@ -11,9 +11,8 @@ public class ChaosGame extends Observable<ChaosGame> {
 
   public ChaosGame() { }
 
-  public ChaosGame(ChaosGameDescription description, int width, int height, Vector2D minCoords,
-                   Vector2D maxCoords) {
-    this.chaosCanvas = new ChaosCanvas(width, height, minCoords, maxCoords);
+  public ChaosGame(ChaosGameDescription description, int width, int height) {
+    this.chaosCanvas = new ChaosCanvas(width, height, description.getMinCoords(), description.getMaxCoords());
     this.description = description;
     this.random = new Random();
     this.currentPoint = new Vector2D(0, 0);
@@ -22,7 +21,8 @@ public class ChaosGame extends Observable<ChaosGame> {
   public void setDescription(ChaosGameDescription description) {
     this.currentPoint = new Vector2D(0, 0);
     this.description = description;
-    this.chaosCanvas.clear();
+    setChaosCanvas(new ChaosCanvas(chaosCanvas.getWidth(), chaosCanvas.getHeight(),
+        description.getMinCoords(), description.getMaxCoords()));
     notifyObservers(this);
   }
 
