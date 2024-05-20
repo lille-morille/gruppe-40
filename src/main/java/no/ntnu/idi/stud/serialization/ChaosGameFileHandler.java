@@ -28,6 +28,15 @@ import no.ntnu.idi.stud.transformation.Transform2D;
  */
 public class ChaosGameFileHandler {
   /**
+   * Creates a new file handler.
+   *
+   * <p>Ensures that the games folder exists.
+   */
+  public ChaosGameFileHandler() {
+    ensureGamesFolderExists();
+  }
+
+  /**
    * The file extension to use for file descriptions.
    */
   static final String FILE_EXTENSION = ".txt";
@@ -57,6 +66,17 @@ public class ChaosGameFileHandler {
   public ChaosGameDescription readFromFile(String name) throws IOException {
     var reader = new FileReader(getPathFromName(name));
     return handleRead(reader);
+  }
+
+  /**
+   * Ensures that the games/base-path folder exists.
+   */
+  private void ensureGamesFolderExists() {
+    try {
+      Files.createDirectories(Paths.get(BASE_PATH));
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
   }
 
   /**
