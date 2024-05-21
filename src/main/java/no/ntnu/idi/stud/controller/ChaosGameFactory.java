@@ -60,6 +60,17 @@ public class ChaosGameFactory {
   }
 
   /**
+   * Creates a chaos game description for the Julia set.
+   *
+   * @return a chaos game description for the Julia set.
+   */
+  public static ChaosGameDescription juliaTransformation(int c) {
+    List<Transform2D> transformation = new ArrayList<>();
+    transformation.add(new JuliaTransform(new Complex(-.74543, .11301), c));
+    return new ChaosGameDescription(new Vector2D(-1.6, -1), new Vector2D(1.6, 1), transformation);
+  }
+
+  /**
    * Creates a chaos game description for the Mandelbrot set.
    *
    * @return a chaos game description for the Mandelbrot set.
